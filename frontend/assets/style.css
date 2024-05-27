@@ -1,3 +1,9 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    align-content: center;
+}
+
 #homepage{
     background-color: #202020;
     color: whitesmoke;
@@ -7,7 +13,10 @@
 #container{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
+    width: 50%;
+    margin-left: 25%;
 }
 
 #btn{
@@ -16,4 +25,49 @@
     flex-direction: row;
     justify-content: center;
     gap: 2vh
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: flex-start;
+    padding-top: 20%;
+}
+
+.form input {
+    width: 200%;
+    margin-top: 5%;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+    background-color: #454A4D;
+    color: white;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-top: 10%;
+}
+
+.form select {
+    background-color: #454A4D;
+    color: white;
+    width: 100%;
+    margin-top: 5%;
+    padding: 2%;
+    border: none;
+    border-radius: 5px;
+}
+
+.form button {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+    font-weight: bold;
+    margin-top: 10%;
+    align-self: flex-end;
+    margin-bottom: 10%;
 }
