@@ -3,8 +3,10 @@ const mapping = [
     {url:"/", page: index},
     {url:"/form", page: form},
     {url:"/confirm", page: confirms},
-    {url:"/appointment", page: appointment},
+    {url:"/calendar", page: calendar},
 ]
+
+import { calendarHtml } from "./script.js";
 
 render();
 window.addEventListener('popstate',render);
@@ -62,9 +64,32 @@ function goto(url){
     render();
 }
 
+export function gotoAppointment(url, object){
+    //redirect to the correct page
+    const map = mapping.find(element => element.url === url)
+
+    if(!map){
+        goto("/");
+        return;
+    }
+
+
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+
+    window.history.pushState("","", url);
+    if(url === "/calendar"){
+        calendar(container, object)
+    }
+    if(url === "/confirm"){
+        confirms(container, object)
+    }
+    
+}
+
 function render(){
     const currentUrl = document.location.pathname;
-    console.log(currentUrl)
+    //console.log(currentUrl)
 
     const map = mapping.find(element => element.url === currentUrl)
 
@@ -117,7 +142,12 @@ function form(container){
     service.classList.add("form-label");
 
     const serviceInput = document.createElement("select");
-    
+    serviceInput.required = true;
+    serviceInput.classList.add("select");
+    const serviceInputOptionNull = document.createElement("option")
+    serviceInputOptionNull.innerText = "--Select option--";
+    serviceInputOptionNull.value = "";
+
     const serviceInputOption1 = document.createElement("option");
     serviceInputOption1.innerText = "Styling";
 
@@ -127,6 +157,7 @@ function form(container){
     const serviceInputOption3 = document.createElement("option");
     serviceInputOption3.innerText = "Haircut";
 
+    serviceInput.appendChild(serviceInputOptionNull);
     serviceInput.appendChild(serviceInputOption1);
     serviceInput.appendChild(serviceInputOption2);
     serviceInput.appendChild(serviceInputOption3);
@@ -134,7 +165,7 @@ function form(container){
     form.appendChild(service);
     form.appendChild(serviceInput);
 
-    const date = document.createElement("label");
+    /*const date = document.createElement("label");
     date.innerText = "Time and date for your appointment with Mr. Edward";
     date.classList.add("form-label");
 
@@ -161,9 +192,35 @@ function form(container){
     });
 
     form.appendChild(date);
-    form.appendChild(dateInput);
+    form.appendChild(dateInput);*/
 
-    const comments = document.createElement("label");
+    const dateBtn = document.createElement("button");
+    dateBtn.type = "submit";
+
+    dateBtn.innerText = "Choose date and time";
+
+    dateBtn.addEventListener("click", event =>{
+        //ter um metodo para confirmar os inputs
+        event.preventDefault();
+
+        let appointment = {
+            name: nameInput.value,
+            phone: phoneInput.value,
+            service: serviceInput.value,
+            date: "",
+            time: "",
+        }
+
+        console.log(appointment);
+
+        gotoAppointment("/calendar", appointment);
+    })
+
+    
+    form.appendChild(dateBtn)
+    
+    //btn submit and input comment
+    /*const comments = document.createElement("label");
     comments.innerText = "Any comments that you want to share with Mr.Edward?";
     comments.classList.add("form-label");
 
@@ -177,14 +234,17 @@ function form(container){
     submitForm.innerText = "Submit";
 
     form.appendChild(submitForm);
+    */
     formDiv.appendChild(form);
 
     container.appendChild(formDiv);
 }
 
-function confirms(container){
-    console.log("container")
+function confirms(container, appointment){
+    console.log("container");
+    console.log(appointment);
 }
-function appointment(container){
-    console.log("appointment")
+function calendar(container, appointment){
+    console.log("calendar")
+    calendarHtml(container, appointment);
 }
