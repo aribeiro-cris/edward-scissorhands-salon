@@ -23,9 +23,9 @@ function index(container){
     const anchorAccept = document.createElement("a");
     const anchorDenied = document.createElement("a");
     const imgAccept = document.createElement("img");
-    imgAccept.src ="./assets/img/Smile.jpg"
+    imgAccept.src ="./frontend/assets/img/Smile.jpg"
     const imgDenied = document.createElement("img");
-    imgDenied.src = "./assets/img/sad.png";
+    imgDenied.src = "./frontend/assets/img/sad.png";
 
     anchorAccept.appendChild(imgAccept);
     anchorDenied.appendChild(imgDenied);
@@ -91,12 +91,18 @@ function render(){
     const currentUrl = document.location.pathname;
     //console.log(currentUrl)
 
-    const map = mapping.find(element => element.url === currentUrl)
+    const map = mapping.find(element => element.url === currentUrl);
+
+    //needs this default method check
+    if(!map){
+        goto("/");
+        return;
+    }
 
     const container = document.getElementById("container");
     container.innerHTML = "";
 
-    map.page(container)
+    map.page(container);
 
 }
 
@@ -241,10 +247,35 @@ function form(container){
 }
 
 function confirms(container, appointment){
-    console.log("container");
+
+    //delete later
+    console.log("confirms");
     console.log(appointment);
+
+    //confirm appointment
+    const confirmation = document.createElement("h2");
+    confirmation.innerText = "Dear " + appointment.name + ", \nYou have sucessfull booked your " + appointment.service + " appointment on " + appointment.date + " at " + appointment.time;
+
+    container.appendChild(confirmation);
+
+    const imageGenerator = document.createElement("div");
+    imageGenerator.classList.add("containerComment");
+    
+    const comment = document.createElement("label");
+    comment.innerText = "Mr. Edward needs so inspiration to do your " + appointment.service + ". Can you briefly describe your wishes?";
+    comment.classList.add("form-label");
+
+    const commentsInput = document.createElement("input");
+    commentsInput.type = "text";
+    commentsInput.classList.add("commentsInput");
+
+    imageGenerator.appendChild(comment);
+    imageGenerator.appendChild(commentsInput);
+
+    container.appendChild(imageGenerator);
 }
+
 function calendar(container, appointment){
-    console.log("calendar")
+    console.log("calendar");
     calendarHtml(container, appointment);
 }

@@ -160,3 +160,25 @@ td.selected {
     flex-direction: column;
     align-items: center;
 }*/
+
+.commentsInput {
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+    font-weight: bold;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    background-color: #454A4D;
+    color: white;
+}
+
+.containerComment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    color: #454A4D;
+    padding: 5%;
+    border-radius: 5px;
+}
