@@ -23,9 +23,9 @@ function index(container){
     const anchorAccept = document.createElement("a");
     const anchorDenied = document.createElement("a");
     const imgAccept = document.createElement("img");
-    imgAccept.src ="./frontend/assets/img/Smile.jpg"
+    imgAccept.src ="./assets/img/Smile.jpg"
     const imgDenied = document.createElement("img");
-    imgDenied.src = "./frontend/assets/img/sad.png";
+    imgDenied.src = "./assets/img/sad.png";
 
     anchorAccept.appendChild(imgAccept);
     anchorDenied.appendChild(imgDenied);
@@ -209,18 +209,25 @@ function form(container){
         //ter um metodo para confirmar os inputs
         event.preventDefault();
 
-        let appointment = {
+        if (form.checkValidity()) {
+        
+        //let appointment = {
+        const appointment = {
             name: nameInput.value,
             phone: phoneInput.value,
             service: serviceInput.value,
             date: "",
             time: "",
-        }
+        };
 
         console.log(appointment);
 
         gotoAppointment("/calendar", appointment);
-    })
+
+        } else {
+            form.reportValidity();
+        }
+    });
 
     
     form.appendChild(dateBtn)
