@@ -19,7 +19,6 @@ public class MainRestController {
 
     private AppointmentService appointmentService;
 
-
     @RequestMapping(method = RequestMethod.GET, path = {"/", ""})
     public ResponseEntity<List<Appointment>> appList(){
         List<Appointment>  list =  appointmentService.list();
@@ -65,7 +64,7 @@ public class MainRestController {
         if(updateApp.getId() != appointment.getId()){
             return new  ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        
+
         updateApp.setClient(appointment.getClient());
         updateApp.setDateAppointment(appointment.getDateAppointment());
 

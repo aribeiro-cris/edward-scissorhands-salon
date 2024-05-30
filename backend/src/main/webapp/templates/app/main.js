@@ -1,9 +1,9 @@
 //Mapping urls
 const mapping = [
-    {url:"/", page: index},
-    {url:"/form", page: form},
-    {url:"/confirm", page: confirms},
-    {url:"/calendar", page: calendar},
+    {url:"/edward", page: index},
+    {url:"/edward/form", page: form},
+    {url:"/edward/confirm", page: confirms},
+    {url:"/edward/calendar", page: calendar},
 ]
 
 import { calendarHtml } from "./script.js";
@@ -24,9 +24,9 @@ function index(container){
     const anchorAccept = document.createElement("a");
     const anchorDenied = document.createElement("a");
     const imgAccept = document.createElement("img");
-    imgAccept.src ="./assets/img/Smile.jpg"
+    imgAccept.src ="./edward/templates/assets/img/Smile.jpg"
     const imgDenied = document.createElement("img");
-    imgDenied.src = "./assets/img/sad.png";
+    imgDenied.src = "./edward/templates/assets/img/sad.png";
 
     anchorAccept.appendChild(imgAccept);
     anchorDenied.appendChild(imgDenied);
@@ -41,12 +41,12 @@ function index(container){
     anchorAccept.addEventListener("click", event => {
         event.preventDefault();
 
-        goto("/form")
+        goto("/edward/form")
     })
     anchorDenied.addEventListener("click", event => {
         event.preventDefault();
 
-        goto("/")
+        goto("/edward")
     })
 
 }
@@ -56,7 +56,7 @@ function goto(url){
     const map = mapping.find(element => element.url === url)
 
     if(!map){
-        goto("/");
+        goto("/edward");
         return;
     }
 
@@ -70,7 +70,7 @@ export function gotoAppointment(url, object){
     const map = mapping.find(element => element.url === url)
 
     if(!map){
-        goto("/");
+        goto("/edward");
         return;
     }
 
@@ -79,10 +79,10 @@ export function gotoAppointment(url, object){
     container.innerHTML = "";
 
     window.history.pushState("","", url);
-    if(url === "/calendar"){
+    if(url === "/edward/calendar"){
         calendar(container, object)
     }
-    if(url === "/confirm"){
+    if(url === "/edward/confirm"){
         confirms(container, object)
     }
     
@@ -223,7 +223,7 @@ function form(container){
 
         console.log(appointment);
 
-        gotoAppointment("/calendar", appointment);
+        gotoAppointment("/edward/calendar", appointment);
 
         } else {
             form.reportValidity();
