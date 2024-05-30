@@ -7,6 +7,7 @@ const mapping = [
 ]
 
 import { calendarHtml } from "./script.js";
+import {imageGeneratorAi, imageGeneratorAiOld} from "./apiai.js"
 
 render();
 window.addEventListener('popstate',render);
@@ -274,11 +275,31 @@ function confirms(container, appointment){
 
     const commentsInput = document.createElement("input");
     commentsInput.type = "text";
+    commentsInput.required = true;
     commentsInput.classList.add("commentsInput");
 
     imageGenerator.appendChild(comment);
     imageGenerator.appendChild(commentsInput);
 
+    const aiBtn = document.createElement("button")
+    const img = document.createElement("img")
+    aiBtn.innerText ="Submit"
+    aiBtn.addEventListener("click", async event =>{
+        event.preventDefault()
+        if (commentsInput.checkValidity()) {
+        const aimage = await imageGeneratorAiOld(commentsInput.value);
+        //const aimage = await imageGeneratorAi();
+        console.log(aimage.artifacts[0].base64)
+        img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
+    
+            } else {
+                commentsInput.reportValidity();
+            }
+        
+    })
+
+    imageGenerator.appendChild(aiBtn)
+    imageGenerator.appendChild(img)
     container.appendChild(imageGenerator);
 }
 
@@ -286,3 +307,4 @@ function calendar(container, appointment){
     console.log("calendar");
     calendarHtml(container, appointment);
 }
+
