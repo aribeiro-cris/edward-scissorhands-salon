@@ -7,15 +7,17 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.util.Date;
 
 @Entity
-@Table(name = "appointment")
-public class Appointment {
+@Inheritance (strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn (name = "SERVICE_TYPE")
+@Table(name = "appointments")
+public abstract class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Version
-    private Integer version;
+    @Embedded
+    private Client client;
 
     @CreationTimestamp
     private Date creationTime;
@@ -23,13 +25,11 @@ public class Appointment {
     @UpdateTimestamp
     private Date updateTime;
 
-    private ServiceType service;
+    //private ServiceType service;
 
-    @Column(name = "date_appointment")
+    @Column(name = "DATE_APPOINTMENT")
     private Date dateAppointment; //ano, mes, dia, hora, minuto
 
-    @Embedded
-    private Client client;
 
     public Client getClient() {
         return client;
@@ -55,28 +55,12 @@ public class Appointment {
         this.id = id;
     }
 
-    public ServiceType getService() {
-        return service;
-    }
-
-    public void setService(ServiceType service) {
-        this.service = service;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
     }
 
     public Date getDateAppointment() {
@@ -86,4 +70,6 @@ public class Appointment {
     public void setDateAppointment(Date dateAppointment) {
         this.dateAppointment = dateAppointment;
     }
+
+    public abstract ServiceType getServiceType();
 }

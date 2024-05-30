@@ -1,9 +1,11 @@
 package com.codeforall.online.edward.service;
 
+import com.codeforall.online.edward.exceptions.EdwardException;
 import com.codeforall.online.edward.model.Appointment;
 import com.codeforall.online.edward.model.Client;
 import com.codeforall.online.edward.persistence.TransactionManager;
 import com.codeforall.online.edward.persistence.dao.AppointmentDao;
+import jakarta.persistence.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,29 +41,44 @@ public class AppointmentServiceImp implements AppointmentService {
 
     @Override
     public void add(Appointment appointment, Client client) {
-        tx.beginWrite();
+        try {
+            tx.beginWrite();
 
-        appointment.setClient(client);
-        Appointment mergedAppointment = appointmentDao.saveOrUpdate(appointment);
+            appointment.setClient(client);
+            Appointment mergedAppointment = appointmentDao.saveOrUpdate(appointment);
 
-        tx.commit();
+            tx.commit();
+        } catch(PersistenceException e) {
+            tx.rollback();
+        }
+
     }
 
     @Override
-    public void deleteAppointment(Integer id) {
-        tx.beginWrite();
+    public void deleteAppointment(Integer id) throws  EdwardException {
+        try {
+            tx.beginWrite();
 
-        appointmentDao.delete(id);
+            appointmentDao.delete(id);
 
-        tx.commit();
+            tx.commit();
+        } catch (PersistenceException e) {
+            tx.rollback();
+            throw new EdwardException();
+        }
     }
 
     @Override
-    public void updateAppointment(Appointment appointment) {
-        tx.beginWrite();
+    public void updateAppointment(Appointment appointment) throws EdwardException {
+        try {
+            tx.beginWrite();
 
-        appointmentDao.saveOrUpdate(appointment);
+            appointmentDao.saveOrUpdate(appointment);
 
-        tx.commit();
+            tx.commit();
+        } catch (PersistenceException e) {
+            tx.rollback();
+            throw new EdwardException();
+        }
     }
 }

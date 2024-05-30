@@ -5,10 +5,10 @@ import jakarta.persistence.*;
 @Embeddable
 public class Client {
 
-    @Column(name = "name_client")
+    @Column(name = "NAME_CLIENT")
     private String name;
 
-    @Column(name= "phone_client")
+    @Column(name= "PHONE_CLIENT")
     private String phone;
 
     public String getName() {

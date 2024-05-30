@@ -1,0 +1,16 @@
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/persistence/jpa/JpaTransactionManager.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/rest/RestController.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/model/Appointment.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/model/Haircut.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/persistence/jpa/JpaSessionManager.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/model/Coloring.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/persistence/SessionManager.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/persistence/dao/AppointmentDao.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/persistence/TransactionManager.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/service/AppointmentServiceImp.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/model/ServiceType.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/persistence/dao/JpaAppointmentDao.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/service/AppointmentService.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/exceptions/EdwardException.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/model/Client.java
+/home/joao/workspace/edward-scissorhands-andreia-joao-filipe-pedro-manuel/edward-scissorhands-andreia-joao-filipe-pedro-manuel/backend/src/main/java/com/codeforall/online/edward/model/Styling.java

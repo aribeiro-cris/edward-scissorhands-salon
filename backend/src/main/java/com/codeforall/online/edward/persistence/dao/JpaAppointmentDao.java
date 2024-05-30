@@ -40,6 +40,8 @@ public class JpaAppointmentDao implements AppointmentDao {
         CriteriaQuery<Appointment> criteriaQuery = em.getCriteriaBuilder().createQuery(appointmentClass);
         Root<Appointment> root = criteriaQuery.from(appointmentClass);
         return em.createQuery(criteriaQuery).getResultList();
+
+        //return em.createQuery("from " + modelType.getSimpleName() + " order by id", modelType).getResultList();
     }
 
     @Override
