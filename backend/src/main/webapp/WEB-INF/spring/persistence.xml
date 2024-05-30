@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean responsible for scanning Spring-managed beans for JPA annotations and processing them -->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+    <!-- data source bean -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+
+        <!-- connection credentials -->
+        <property name="driverClass" value="org.postgresql.Driver"/>
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost/edward?useSSL=false"/>
+        <property name="user" value="andreia"/>
+        <property name="password" value="andreia"/>
+
+        <!-- c3p0 database connection pool management properties -->
+        <property name="minPoolSize" value="1"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="acquireIncrement" value="1"/>
+        <property name="maxStatements" value="0"/>
+
+        <!-- destroy idle pool after 300ms -->
+        <property name="idleConnectionTestPeriod" value="300"/>
+
+        <!-- destroy db connection if it fails to login after 7200ms -->
+        <property name="loginTimeout" value="7200"/>
+
+    </bean>
+
+    <!-- Entity Manager Factory bean provided by the Spring Framework -->
+    <bean id="emFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.codeforall.online.edward.model"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <property name="jpaProperties">
+            <map>
+                <entry key="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+                <entry key="hibernate.show_sql" value="true" />
+                <!-- when done creating the schema change to validate -->
+                <entry key="hibernate.hbm2ddl.auto" value="create"/>
+            </map>
+        </property>
+    </bean>
+
+    <!-- database populator bean which runs the seeds script -->
+    <bean id="databasePopulator" class="org.springframework.jdbc.datasource.init.ResourceDatabasePopulator">
+        <property name="scripts">
+            <list>
+                <value>classpath:db/edward_seeds.sql</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- configures a data source initializer which orchestrates the database initialization process -->
+    <bean id="dataSourceInitializer" class="org.springframework.jdbc.datasource.init.DataSourceInitializer">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="databasePopulator" ref="databasePopulator"/>
+        <!-- when done creating the schema and populating the database, change to false -->
+        <property name="enabled" value="true"/>
+    </bean>
+</beans>
