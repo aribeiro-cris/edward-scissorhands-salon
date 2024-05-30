@@ -6,18 +6,25 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class JpaAppointmentDao implements AppointmentDao {
+@Repository
+public class JpaAppointmentDao extends GenericDao<Appointment> implements AppointmentDao {
 
-    protected JpaSessionManager sm;
-    protected Class<Appointment> appointmentClass;
+    //protected JpaSessionManager sm;
+    //protected Class<Appointment> appointmentClass;
 
     /**
      * Initializes a new JPA DAO instance given an appointment type
     */
-    public JpaAppointmentDao(Class<Appointment> appointmentClass) {
+
+    public JpaAppointmentDao() {
+        super(Appointment.class);
+    }
+    /*public JpaAppointmentDao(Class<Appointment> appointmentClass) {
         this.appointmentClass = appointmentClass;
     }
 
@@ -26,7 +33,7 @@ public class JpaAppointmentDao implements AppointmentDao {
      *
      * @param sm the session manager to set
      */
-    @Autowired
+    /*@Autowired
     public void setSm(JpaSessionManager sm) {
         this.sm = sm;
     }
@@ -65,5 +72,5 @@ public class JpaAppointmentDao implements AppointmentDao {
         EntityManager em = sm.getCurrentSession();
 
         em.remove(em.find(appointmentClass, id));
-    }
+    }*/
 }
