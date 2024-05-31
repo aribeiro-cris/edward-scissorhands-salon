@@ -3,6 +3,7 @@ const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
 
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
+let today = new Date();
 
 import { gotoAppointment } from "./main.js";
 
@@ -91,10 +92,17 @@ export function renderCalendar(month, year) {
             } else if (date > totalDays) {
                 cell.innerHTML = '';
             } else {
+                const cellDate = new Date(year, month, date);
+
                 cell.innerHTML = date;
                 cell.classList.add('date-cell');
-                cell.dataset.date = date; // Store the date in the dataset
-                cell.addEventListener('click', selectDate);
+                
+                if(cellDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
+                    cell.classList.add('disabled');
+                } else {
+                    cell.dataset.date = date; // Store the date in the dataset
+                    cell.addEventListener('click', selectDate);
+                }
                 date++;
             }
 

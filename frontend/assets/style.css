@@ -6,10 +6,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #97068d, #6416c9);
-	background-size: 400% 400%;
-	-webkit-animation: gradient 15s ease infinite;
-	        animation: gradient 15s ease infinite;
+    background: linear-gradient(-45deg, 
+        #2F4F4F, 
+        #191970, 
+        #708090, 
+        #000000);
+    color: #F5F5F5;
+    background-size: 400% 400%;
 	height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -20,23 +23,33 @@ body {
     border-radius: 10px;
     background-color: whitesmoke;
     color: #202020;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     width: 50%;
     height: 100%;
 }
 
-.firstpage-title {
-    font-weight: bold;
-    text-shadow: 2px 1px 1px gray;
+h1 {
+    font-weight: 900;
+    font-size: 6vh;
+    padding: 3%;
+}
+
+h2 {
+    font-weight: 750;
+    font-size: 4vh;
+}
+
+.text-confirmation {
+    font-size: 4vh;
 }
 
 img {
-    /*
-    border-radius:
-    */
+    border-radius: 10px;
 }
 
 #btn{
@@ -44,7 +57,7 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 2vh
+    gap: 4vh;
 }
 
 .form {
@@ -58,36 +71,47 @@ img {
     margin-bottom: 10%;
     border: none;
     border-radius: 5px;
-    padding: 3%;
-    background-color: #454A4D;
+    padding: 7%;
+    background-color: #8D9DA8;
     color: white;
 }
 
 .form-label {
-    font-weight: bold;
-    margin-top: 5%;
+    font-weight: bolder;
+    padding-top: 5%;
+    width: 100%;
+    font-size: 3vh;
 }
 
 .form select {
-    background-color: #454A4D;
+    background-color: #8D9DA8;
     color: white;
     width: 100%;
     margin-top: 5%;
-    padding: 2%;
+    padding: 7%;
     border: none;
     border-radius: 5px;
 }
 
 .form button {
-    background-color: #97068d;
+    background-color: #5A6A75;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 3%;
+    padding: 7%;
     font-weight: bold;
-    margin-top: 10%;
+    margin-top: 20%;
     align-self: center;
     margin-bottom: 10%;
+}
+
+.aiBtn {
+    background-color: #5A6A75;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 2%;
+    font-weight: bolder;
 }
 
 .form button:hover {
@@ -115,7 +139,7 @@ table {
     max-width: 600px;
     margin-top: 20px;
     color: white;
-    background-color: darkgray;
+    background-color: #8D9DA8;
 }
 
 th, td {
@@ -126,7 +150,7 @@ th, td {
 }
 
 th {
-    background-color: #454A4D;
+    background-color: #5A6A75;
 }
 
 td {
@@ -134,12 +158,12 @@ td {
 }
 
 td:hover {
-    background-color: #454A4D;
+    background-color: #5A6A75;
 }
 
 td.selected {
     background-color: #a0c4ff;
-    background-color:darkgray;
+    background-color:#5A6A75;
 }
 
 .booking-form {
@@ -149,17 +173,18 @@ td.selected {
 }
 
 .defaultBtn{
-    background-color: #ddd;
+    background-color: #5A6A75;
     border: none;
     border-radius: 5px;
     padding: 3%;
-    font-weight: bold;
+    font-weight: bolder;
     margin-top: 10%;
     margin-bottom: 10%;
+    color: whitesmoke;
 }
 
 .defaultBtn:hover{
-    background-color:lightgrey;
+    background-color:#5A6A75;
     cursor: pointer;
 }
 
@@ -181,15 +206,21 @@ td.selected {
     font-weight: bold;
     margin-top: 10%;
     margin-bottom: 10%;
-    background-color: #454A4D;
+    background-color: #8D9DA8;
     color: white;
 }
 
 .containerComment {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     color: #454A4D;
     padding: 5%;
     border-radius: 5px;
+}
+
+.disabled {
+    background-color: #5A6A75;
+    cursor: default;
 }

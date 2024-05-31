@@ -23,13 +23,14 @@ function index(container){
 
     const divAnchor = document.createElement("div");
     divAnchor.setAttribute("id", "btn");
+
     const anchorAccept = document.createElement("a");
     const anchorDenied = document.createElement("a");
     const imgAccept = document.createElement("img");
-    imgAccept.src ="./assets/img/Smile.jpg"
+    imgAccept.src ="./assets/img/edward-happy-face-ai.png"
     imgAccept.alt = "Eduard happy face";
     const imgDenied = document.createElement("img");
-    imgDenied.src = "./assets/img/sad.png";
+    imgDenied.src = "./assets/img/edward-sad-face-ai.png";
     imgDenied.alt = "Eduard sad face";
 
     anchorAccept.appendChild(imgAccept);
@@ -113,7 +114,7 @@ function render(){
 
 function form(container){
     const title = document.createElement("h1");
-    title.innerText = "Appointment with Edward";
+    title.innerText = "Schedule Your Appointment with Edward";
     container.appendChild(title);
 
     const formDiv = document.createElement("div");
@@ -122,7 +123,7 @@ function form(container){
     form.method = "post";
 
     const name = document.createElement("label");
-    name.innerText = "Your name";
+    name.innerText = "Name";
     name.classList.add("form-label");
 
     const nameInput = document.createElement("input");
@@ -136,7 +137,7 @@ function form(container){
     form.appendChild(nameInput);
 
     const phone = document.createElement("label");
-    phone.innerText = "Your phone number";
+    phone.innerText = "Phone number";
     phone.classList.add("form-label");
 
     const phoneInput = document.createElement("input");
@@ -149,7 +150,7 @@ function form(container){
     form.appendChild(phoneInput);
 
     const service = document.createElement("label");
-    service.innerText = "What services do you want?";
+    service.innerText = "Services available";
     service.classList.add("form-label");
 
     const serviceInput = document.createElement("select");
@@ -218,8 +219,9 @@ function confirms(container, appointment){
     console.log(appointment);
 
     //confirm appointment
-    const confirmation = document.createElement("h2");
-    confirmation.innerText = "Dear " + appointment.name + ", \nYou have sucessfull booked your " + appointment.service + " appointment on " + appointment.date + " at " + appointment.time;
+    const confirmation = document.createElement("h1");
+    confirmation.innerText = "Congratulations, " + appointment.name + "! You have sucessfull booked a " + appointment.service + " on " + appointment.date + " at " + appointment.time + ". Get ready to elevate your look!";
+    confirmation.classList.add("text-confirmation");
 
     container.appendChild(confirmation);
 
@@ -227,7 +229,7 @@ function confirms(container, appointment){
     imageGenerator.classList.add("containerComment");
     
     const comment = document.createElement("label");
-    comment.innerText = "Mr. Edward needs so inspiration to do your " + appointment.service + ". Can you briefly describe your wishes?";
+    comment.innerText = "Mr. Edward is looking for inspiration for your styling. Could you please describe your preferences briefly?";
     comment.classList.add("form-label");
 
     const commentsInput = document.createElement("input");
@@ -238,9 +240,11 @@ function confirms(container, appointment){
     imageGenerator.appendChild(comment);
     imageGenerator.appendChild(commentsInput);
 
-    const aiBtn = document.createElement("button")
-    const img = document.createElement("img")
-    aiBtn.innerText ="Submit"
+    const aiBtn = document.createElement("button");
+    const img = document.createElement("img");
+    aiBtn.innerText = "Submit";
+    aiBtn.classList.add("aiBtn");
+
     aiBtn.addEventListener("click", async event =>{
         event.preventDefault();
 
@@ -256,8 +260,8 @@ function confirms(container, appointment){
         }  
     });
 
-    imageGenerator.appendChild(aiBtn)
-    imageGenerator.appendChild(img)
+    imageGenerator.appendChild(aiBtn);
+    imageGenerator.appendChild(img);
     container.appendChild(imageGenerator);
 }
 
