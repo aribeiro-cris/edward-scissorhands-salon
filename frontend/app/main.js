@@ -1,3 +1,7 @@
+import { calendarHtml } from "./calendar.js";
+import {imageGeneratorAi, imageGeneratorAiOld} from "./ai-api.js"
+import { addAppointment } from "./fetch-api.js";
+
 //Mapping urls
 const mapping = [
     {url:"/", page: index},
@@ -6,18 +10,16 @@ const mapping = [
     {url:"/calendar", page: calendar},
 ]
 
-import { calendarHtml } from "./script.js";
-import {imageGeneratorAi, imageGeneratorAiOld} from "./apiai.js"
-
 render();
 window.addEventListener('popstate',render);
 
 
 function index(container){
     const title = document.createElement("h1");
-    title.innerText = "Edward Hair Saloon";
+    title.innerText = "Welcome to Scissorhands Saloon";
+    title.classList.add("firstpage-title");
     const question = document.createElement("h2");
-    question.innerText = "Do you want to book an appointment?";
+    question.innerText = "Would you like to craft your perfect look with us?";
 
     const divAnchor = document.createElement("div");
     divAnchor.setAttribute("id", "btn");
@@ -25,8 +27,10 @@ function index(container){
     const anchorDenied = document.createElement("a");
     const imgAccept = document.createElement("img");
     imgAccept.src ="./assets/img/Smile.jpg"
+    imgAccept.alt = "Eduard happy face";
     const imgDenied = document.createElement("img");
     imgDenied.src = "./assets/img/sad.png";
+    imgDenied.alt = "Eduard sad face";
 
     anchorAccept.appendChild(imgAccept);
     anchorDenied.appendChild(imgDenied);
@@ -172,42 +176,12 @@ function form(container){
     form.appendChild(service);
     form.appendChild(serviceInput);
 
-    /*const date = document.createElement("label");
-    date.innerText = "Time and date for your appointment with Mr. Edward";
-    date.classList.add("form-label");
-
-    const dateInput = document.createElement("input");
-    dateInput.type = "datetime-local";
-
-    //need to find alternative option to this
-    dateInput.addEventListener('input', function() {
-        const event = new Date(this.value);
-        const hours = event.getHours();
-        const mins = event.getMinutes();
-
-        if(hours >= 18 || hours < 10) {
-            alert("Appointment can only be booked between 10am and 6pm.");
-            //this.value = "";
-            return;
-        }
-
-        if(!mins == 30 || !mins == 0) 
-            {
-                alert("Appointment can only be booked every half hour.");
-                return;
-            }
-    });
-
-    form.appendChild(date);
-    form.appendChild(dateInput);*/
-
     const dateBtn = document.createElement("button");
     dateBtn.type = "submit";
 
     dateBtn.innerText = "Choose date and time";
 
     dateBtn.addEventListener("click", event =>{
-        //ter um metodo para confirmar os inputs
         event.preventDefault();
 
         if (form.checkValidity()) {
@@ -231,24 +205,7 @@ function form(container){
     });
 
     
-    form.appendChild(dateBtn)
-    
-    //btn submit and input comment
-    /*const comments = document.createElement("label");
-    comments.innerText = "Any comments that you want to share with Mr.Edward?";
-    comments.classList.add("form-label");
-
-    const commentsInput = document.createElement("input");
-    commentsInput.type = "text";    
-
-    form.appendChild(comments);
-    form.appendChild(commentsInput);
-
-    const submitForm = document.createElement("button");
-    submitForm.innerText = "Submit";
-
-    form.appendChild(submitForm);
-    */
+    form.appendChild(dateBtn);
     formDiv.appendChild(form);
 
     container.appendChild(formDiv);
@@ -285,18 +242,19 @@ function confirms(container, appointment){
     const img = document.createElement("img")
     aiBtn.innerText ="Submit"
     aiBtn.addEventListener("click", async event =>{
-        event.preventDefault()
+        event.preventDefault();
+
         if (commentsInput.checkValidity()) {
-        const aimage = await imageGeneratorAiOld(commentsInput.value);
-        //const aimage = await imageGeneratorAi();
-        console.log(aimage.artifacts[0].base64)
-        img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
-    
-            } else {
-                commentsInput.reportValidity();
-            }
-        
-    })
+            const aimage = await imageGeneratorAiOld(commentsInput.value);
+            //const aimage = await imageGeneratorAi();
+            console.log(aimage.artifacts[0].base64)
+            img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
+            
+            const response = await addAppointment(event, appointment);
+        } else {
+            commentsInput.reportValidity();
+        }  
+    });
 
     imageGenerator.appendChild(aiBtn)
     imageGenerator.appendChild(img)

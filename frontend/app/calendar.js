@@ -6,8 +6,7 @@ let currentYear = new Date().getFullYear();
 
 import { gotoAppointment } from "./main.js";
 
- export function calendarHtml(container, appointment){ //document.addEventListener('DOMContentLoaded', () => {
-    //const container = document.getElementById("container");
+export function calendarHtml(container, appointment) {
     container.innerHTML = `
         <div class="calendar">
             <div class="header">
@@ -53,8 +52,7 @@ import { gotoAppointment } from "./main.js";
             </form>
         </div>
     `;
-    //document.body.appendChild(container);
-
+    
     renderCalendar(currentMonth, currentYear);
 
     document.getElementById('prev').addEventListener('click', () => changeMonth(-1));
@@ -70,8 +68,7 @@ import { gotoAppointment } from "./main.js";
         //console.log(appointment)
         gotoAppointment("/confirm", appointment)
     });
-//});
- }
+}
 
 export function renderCalendar(month, year) {
     const calendarBody = document.getElementById('calendar-body');

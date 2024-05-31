@@ -2,21 +2,41 @@ body {
     margin: 0px;
     padding: 0px;
     align-content: center;
-}
-
-#homepage{
-    background-color: #202020;
-    color: whitesmoke;
-    font-family: Arial, Helvetica, sans-serif
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #97068d, #6416c9);
+	background-size: 400% 400%;
+	-webkit-animation: gradient 15s ease infinite;
+	        animation: gradient 15s ease infinite;
+	height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #container{
+    margin: 4%;
+    padding: 4%;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    color: #202020;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     width: 50%;
-    margin-left: 25%;
+    height: 100%;
+}
+
+.firstpage-title {
+    font-weight: bold;
+    text-shadow: 2px 1px 1px gray;
+}
+
+img {
+    /*
+    border-radius:
+    */
 }
 
 #btn{
@@ -30,14 +50,10 @@ body {
 .form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    align-self: flex-start;
     padding-top: 5%;
 }
 
 .form input {
-    width: 200%;
     margin-top: 5%;
     margin-bottom: 10%;
     border: none;
@@ -63,13 +79,14 @@ body {
 }
 
 .form button {
-    background-color: white;
+    background-color: #97068d;
+    color: white;
     border: none;
     border-radius: 5px;
     padding: 3%;
     font-weight: bold;
     margin-top: 10%;
-    align-self: flex-end;
+    align-self: center;
     margin-bottom: 10%;
 }
 
@@ -97,8 +114,8 @@ table {
     width: 100%;
     max-width: 600px;
     margin-top: 20px;
-    
     color: white;
+    background-color: darkgray;
 }
 
 th, td {
@@ -132,7 +149,7 @@ td.selected {
 }
 
 .defaultBtn{
-    background-color: white;
+    background-color: #ddd;
     border: none;
     border-radius: 5px;
     padding: 3%;
@@ -155,11 +172,6 @@ td.selected {
     border: none;
     border-radius: 5px;
 }
-/*form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}*/
 
 .commentsInput {
     width: 50%;
@@ -177,7 +189,6 @@ td.selected {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: white;
     color: #454A4D;
     padding: 5%;
     border-radius: 5px;
