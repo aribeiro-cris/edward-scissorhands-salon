@@ -1,3 +1,7 @@
+//DELETE API KEY before publishing on github
+const API_KEY = "sk-eGEExWhw7cwk9kQy0GnOOwbPU79TIC9THC5NRzNex3BgQ5IT"; //api_key from Andreia
+
+//CODE TO DELETE
 /*import fs from "node:fs";
 import axios from "axios";
 import FormData from "form-data";
@@ -26,8 +30,7 @@ if(response.status === 200) {
   throw new Error(`${response.status}: ${response.data.toString()}`);
 }*/
 
-//import FormData from "form-data";
-
+//CODE TO DELETE
 export async function imageGeneratorAi(){
     /*let formD = new FormData();
     formD.append("prompt", "Lighthouse on a cliff overlooking the ocean")
@@ -78,12 +81,11 @@ export async function imageGeneratorAi(){
 }
 
 export async function imageGeneratorAiOld(textToImage){
-
    
     const param = {
         method: 'POST',
         headers: { 
-        Authorization: `Bearer sk-6fIswIj3jQsfo1kIF8W8iWKzqDTTbX0g71UVAvUgbKGgPUVK`, 
+        Authorization: `Bearer ${API_KEY}`, 
         'Content-Type': 'application/json',
         Accept: "application/json", 
 

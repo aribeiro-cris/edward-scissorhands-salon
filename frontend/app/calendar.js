@@ -28,16 +28,16 @@ export function calendarHtml(container, appointment) {
                     </tr>
                 </thead>
                 <tbody id="calendar-body">
-                    <!-- Calendar dates will be generated here by JavaScript -->
+
                 </tbody>
             </table>
         </div>
         <div class="booking-form">
-            <h2>Book Date and Time</h2>
+            <h2 class ="title-book-date">Book Date and Time</h2>
             <form class="form" id="booking-form">
-                <label for="selected-date">Date:</label>
+                <label for="selected-date" class="sub-title-calendar">Date:</label>
                 <input type="text" id="selected-date" readonly>
-                <label for="time-slot">Time Slot:</label>
+                <label for="time-slot" class="sub-title-calendar">Time Slot:</label>
                 <select class="select" id="time-slot">
                     <option value="09:00">09:00 AM</option>
                     <option value="10:00">10:00 AM</option>

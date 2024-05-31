@@ -229,7 +229,7 @@ function confirms(container, appointment){
     imageGenerator.classList.add("containerComment");
     
     const comment = document.createElement("label");
-    comment.innerText = "Mr. Edward is looking for inspiration for your styling. Could you please describe your preferences briefly?";
+    comment.innerText = "Edward is looking for inspiration for your styling. Could you please describe your preferences briefly?";
     comment.classList.add("form-label");
 
     const commentsInput = document.createElement("input");

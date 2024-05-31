@@ -1,5 +1,5 @@
 body {
-    margin: 0px;
+    margin: 4%;
     padding: 0px;
     align-content: center;
     display: flex;
@@ -39,9 +39,25 @@ h1 {
     padding: 3%;
 }
 
+#month-year {
+    font-size: 4vh;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
 h2 {
     font-weight: 750;
     font-size: 4vh;
+}
+
+.title-book-date {
+    font-weight: 900;
+    font-size: 4vh;
+}
+
+.sub-title-calendar {
+    font-weight: bolder;
+    font-size: 2vh;
 }
 
 .text-confirmation {
@@ -74,6 +90,7 @@ img {
     padding: 7%;
     background-color: #8D9DA8;
     color: white;
+    font-size: 2vh;
 }
 
 .form-label {
@@ -81,6 +98,7 @@ img {
     padding-top: 5%;
     width: 100%;
     font-size: 3vh;
+    color: #202020;
 }
 
 .form select {
@@ -91,6 +109,7 @@ img {
     padding: 7%;
     border: none;
     border-radius: 5px;
+    font-size: 2vh;
 }
 
 .form button {
@@ -100,6 +119,7 @@ img {
     border-radius: 5px;
     padding: 7%;
     font-weight: bold;
+    font-size: 2vh;
     margin-top: 20%;
     align-self: center;
     margin-bottom: 10%;
@@ -112,6 +132,7 @@ img {
     border-radius: 5px;
     padding: 2%;
     font-weight: bolder;
+    margin-bottom: 4%;
 }
 
 .form button:hover {
@@ -178,6 +199,7 @@ td.selected {
     border-radius: 5px;
     padding: 3%;
     font-weight: bolder;
+    font-size: 2vh;
     margin-top: 10%;
     margin-bottom: 10%;
     color: whitesmoke;
