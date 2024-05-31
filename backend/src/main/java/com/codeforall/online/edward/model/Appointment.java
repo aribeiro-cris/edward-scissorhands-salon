@@ -1,11 +1,21 @@
 package com.codeforall.online.edward.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Haircut.class, name ="HAIRCUT"),
+        @JsonSubTypes.Type(value = Styling.class, name = "Styling"),
+        @JsonSubTypes.Type(value =Coloring.class, name ="Coloring")}
+)
 @Entity
 @Inheritance (strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn (name = "SERVICE_TYPE")
