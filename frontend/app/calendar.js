@@ -65,7 +65,7 @@ export function calendarHtml(container, appointment) {
         const timeSlot = document.getElementById('time-slot').value;
         //alert(`Booked ${selectedDate} at ${timeSlot}`);
         appointment.date = selectedDate;
-        appointment.time = timeSlot;
+        appointment.hour = timeSlot;
         //console.log(appointment)
         gotoAppointment("/confirm", appointment)
     });

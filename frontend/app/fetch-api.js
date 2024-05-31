@@ -14,3 +14,13 @@ export const addAppointment = async (event, appointment) => {
     const data = await response.json();
     return data;
 };
+
+/*
+const getAppointments = async (event, appointment) => {
+    event.preventDefault();
+
+    const response = await fetch("http://localhost:8080/edward/api/edward",
+
+)
+}
+*/

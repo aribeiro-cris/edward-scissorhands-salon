@@ -189,11 +189,12 @@ function form(container){
         
         //let appointment = {
         const appointment = {
-            name: nameInput.value,
-            phone: phoneInput.value,
-            service: serviceInput.value,
+            name_client: nameInput.value,
+            phone_client: phoneInput.value,
+            serviceType: serviceInput.value,
             date: "",
-            time: "",
+            hour: "",
+            comment: ""
         };
 
         console.log(appointment);
@@ -220,7 +221,7 @@ function confirms(container, appointment){
 
     //confirm appointment
     const confirmation = document.createElement("h1");
-    confirmation.innerText = "Congratulations, " + appointment.name + "! You have sucessfull booked a " + appointment.service + " on " + appointment.date + " at " + appointment.time + ". Get ready to elevate your look!";
+    confirmation.innerText = "Congratulations, " + appointment.name_client + "! You have sucessfull booked a " + appointment.serviceType + " on " + appointment.date + " at " + appointment.hour + ". Get ready to elevate your look!";
     confirmation.classList.add("text-confirmation");
 
     container.appendChild(confirmation);
@@ -242,6 +243,7 @@ function confirms(container, appointment){
 
     const aiBtn = document.createElement("button");
     const img = document.createElement("img");
+    
     aiBtn.innerText = "Submit";
     aiBtn.classList.add("aiBtn");
 
@@ -254,11 +256,13 @@ function confirms(container, appointment){
             console.log(aimage.artifacts[0].base64)
             img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
             
+            appointment.comment = commentsInput.value;
+            console.log(appointment);
             const response = await addAppointment(event, appointment);
         } else {
             commentsInput.reportValidity();
         }  
-    });
+    })
 
     imageGenerator.appendChild(aiBtn);
     imageGenerator.appendChild(img);
