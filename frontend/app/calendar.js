@@ -1,11 +1,12 @@
+import { getAppointments } from "./fetch-api.js";
+
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
+const availableHours = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"];
 
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 let today = new Date();
-
-let monthNumeric = String(currentMonth + 1).padStart(2, '0');
 
 import { gotoAppointment } from "./main.js";
 
@@ -68,6 +69,7 @@ export function calendarHtml(container, appointment) {
         //alert(`Booked ${selectedDate} at ${timeSlot}`);
         appointment.date = selectedDate;
         appointment.hour = timeSlot;
+
         console.log(appointment);
         gotoAppointment("/confirm", appointment)
     });
@@ -129,9 +131,41 @@ function changeMonth(delta) {
     renderCalendar(currentMonth, currentYear);
 }
 
-function selectDate(event) {
+async function selectDate(event) {
+    let monthNumeric = String(currentMonth + 1).padStart(2, '0');
+
     document.querySelectorAll('.date-cell').forEach(cell => cell.classList.remove('selected'));
     event.target.classList.add('selected');
     const date = event.target.dataset.date; // Retrieve the date from the dataset
     document.getElementById('selected-date').value = `${date}/${monthNumeric}/${currentYear}`;
+
+    const time = document.getElementById('time-slot');
+    time.innerHTML = "";
+
+    const response = await getAppointments();
+    //console.log(response);
+
+    response.forEach((element) => {
+        const dateSelectedDate = date + "/" + monthNumeric + "/" + currentYear;
+        console.log(element);
+        console.log(dateSelectedDate);
+
+    
+            console.log(element.date);
+            for(var i=0; i < availableHours.length - 1; i++) {
+                console.log("ARRAY: " + availableHours);
+
+                if(element.hour !== availableHours[i] && dateSelectedDate === element.date) {
+                    console.log("aaaaaaaaaaa ");
+
+                    const options = document.createElement("option");
+                    options.value = availableHours[i];
+                    options.innerText = availableHours[i];
+                    console.log(availableHours[i]);
+
+                    time.appendChild(options);
+                }
+            }
+    });
+
 }

@@ -191,7 +191,7 @@ function form(container){
         const appointment = {
             name_client: nameInput.value,
             phone_client: phoneInput.value,
-            serviceType: serviceInput.value,
+            serviceType: serviceInput.value.toUpperCase(),
             date: "",
             hour: "",
             comment: ""
@@ -253,10 +253,10 @@ function confirms(container, appointment){
         event.preventDefault();
 
         if (commentsInput.checkValidity()) {
-            const aimage = await imageGeneratorAiOld(commentsInput.value);
+            //const aimage = await imageGeneratorAiOld(commentsInput.value);
             //const aimage = await imageGeneratorAi();
-            console.log(aimage.artifacts[0].base64)
-            img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
+            //console.log(aimage.artifacts[0].base64)
+            //img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
             
             appointment.comment = commentsInput.value;
             console.log(appointment);
