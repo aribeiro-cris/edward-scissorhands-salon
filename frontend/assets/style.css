@@ -30,7 +30,7 @@ body {
     justify-content: center;
     text-align: center;
     width: 50%;
-    height: 100%;
+    height: auto;
 }
 
 h1 {
@@ -61,7 +61,10 @@ h2 {
 }
 
 .text-confirmation {
-    font-size: 4vh;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1%;
+    font-size: 3vh;
 }
 
 img {
@@ -95,9 +98,9 @@ img {
 
 .form-label {
     font-weight: bolder;
-    padding-top: 5%;
+    margin: 0;
     width: 100%;
-    font-size: 3vh;
+    font-size: 2vh;
     color: #202020;
 }
 
@@ -226,8 +229,8 @@ td.selected {
     border-radius: 5px;
     padding: 3%;
     font-weight: bold;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     background-color: #8D9DA8;
     color: white;
 }
@@ -238,8 +241,8 @@ td.selected {
     align-items: center;
     justify-content: center;
     color: #454A4D;
-    padding: 5%;
     border-radius: 5px;
+    overflow: auto;
 }
 
 .disabled {

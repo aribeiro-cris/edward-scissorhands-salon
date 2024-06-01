@@ -221,7 +221,7 @@ function confirms(container, appointment){
 
     //confirm appointment
     const confirmation = document.createElement("h1");
-    confirmation.innerText = "Congratulations, " + appointment.name_client + "! You have sucessfull booked a " + appointment.serviceType + " on " + appointment.date + " at " + appointment.hour + ". Get ready to elevate your look!";
+    confirmation.innerText = "Congratulations, " + appointment.name_client + "! You have sucessfully booked a " + appointment.serviceType.toLowerCase() + " on " + appointment.date + " at " + appointment.hour + ". Get ready to elevate your look!";
     confirmation.classList.add("text-confirmation");
 
     container.appendChild(confirmation);
@@ -230,7 +230,7 @@ function confirms(container, appointment){
     imageGenerator.classList.add("containerComment");
     
     const comment = document.createElement("label");
-    comment.innerText = "Edward is looking for inspiration for your styling. Could you please describe your preferences briefly?";
+    comment.innerText = "Edward is looking for inspiration for your " + appointment.serviceType.toLowerCase() + ". Could you please describe your preferences briefly?";
     comment.classList.add("form-label");
 
     const commentsInput = document.createElement("input");
@@ -243,6 +243,8 @@ function confirms(container, appointment){
 
     const aiBtn = document.createElement("button");
     const img = document.createElement("img");
+    img.style.maxWidth = "100%"; // Ensure the image doesn't go out of the container
+
     
     aiBtn.innerText = "Submit";
     aiBtn.classList.add("aiBtn");
