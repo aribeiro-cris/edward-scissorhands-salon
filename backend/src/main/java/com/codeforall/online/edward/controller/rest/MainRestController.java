@@ -19,7 +19,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("api/edward")
+@RequestMapping("api/appointment")
 public class MainRestController {
 
     private AppointmentService appointmentService;
@@ -39,17 +39,22 @@ public class MainRestController {
             return new ResponseEntity<>(appointmentDto, HttpStatus.NOT_FOUND);
         }
         Appointment appointment = dtoToAppointment.convert(appointmentDto);
+        if(appointment.getId() != null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         appointmentService.add(appointment, appointment.getClient());
         return new ResponseEntity<>(appointment, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity showAppointment(@PathVariable Integer id) {
-        AppointmentDto appointmentDto = appointmentToDto.convert(appointmentService.get(id));
-
-        if(appointmentDto == null){
+    public ResponseEntity showAppointment(@PathVariable Integer id) throws EdwardException {
+        try{
+            appointmentService.get(id);
+        }catch (EdwardException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
+        AppointmentDto appointmentDto = appointmentToDto.convert(appointmentService.get(id));
 
         return new ResponseEntity<>(appointmentDto,HttpStatus.OK);
     }
@@ -69,14 +74,23 @@ public class MainRestController {
         if (bindingResult.hasErrors()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        if(!appointmentDto.getId().equals(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        try{
+            appointmentService.get(id);
+        }catch (EdwardException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Appointment updateApp = dtoToAppointment.convert(appointmentDto);
 
         //if(updateApp.getId() != null){
-           // return new  ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            //return new  ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        //
         //}
 
         updateApp.setClient(updateApp.getClient());
-        updateApp.setDateAppointment(updateApp.getDateAppointment());
 
         appointmentService.updateAppointment(updateApp);
         return new ResponseEntity<>(updateApp, HttpStatus.OK);

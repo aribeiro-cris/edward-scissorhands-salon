@@ -13,13 +13,13 @@ public class AppointmentToDto {
 
         AppointmentDto appointmentDto = new AppointmentDto();
 
-        appointmentDto.setDate_appointment(appointment.getDateAppointment());
         appointmentDto.setId(appointment.getId());
         appointmentDto.setName_client(appointment.getClient().getName());
         appointmentDto.setPhone_client(appointment.getClient().getPhone());
-        appointmentDto.setCreationTime(appointment.getCreationTime());
-        appointmentDto.setUpdateTime(appointment.getUpdateTime());
         appointmentDto.setServiceType(appointment.getServiceType());
+        appointmentDto.setDate(appointment.getDate());
+        appointmentDto.setHour(appointment.getHour());
+        appointmentDto.setComment(appointment.getComment());
 
         return appointmentDto;
     }

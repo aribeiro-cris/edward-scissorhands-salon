@@ -6,16 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Haircut.class, name ="HAIRCUT"),
-        @JsonSubTypes.Type(value = Styling.class, name = "Styling"),
-        @JsonSubTypes.Type(value =Coloring.class, name ="Coloring")}
-)
 @Entity
 @Inheritance (strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn (name = "SERVICE_TYPE")
@@ -29,17 +23,13 @@ public abstract class Appointment {
     @Embedded
     private Client client;
 
-    @CreationTimestamp
-    private Date creationTime;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private String date;
 
-    @UpdateTimestamp
-    private Date updateTime;
+    @DateTimeFormat(pattern = "HH:mm")
+    private String hour;
 
-    //private ServiceType service;
-
-    @Column(name = "DATE_APPOINTMENT")
-    private Date dateAppointment; //ano, mes, dia, hora, minuto
-
+    private String comment;
 
     public Client getClient() {
         return client;
@@ -47,14 +37,6 @@ public abstract class Appointment {
 
     public void setClient(Client client) {
         this.client = client;
-    }
-
-    public Date getCreationTime() {
-        return creationTime;
-    }
-
-    public void setCreationTime(Date creationTime) {
-        this.creationTime = creationTime;
     }
 
     public Integer getId() {
@@ -65,21 +47,29 @@ public abstract class Appointment {
         this.id = id;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Date getDateAppointment() {
-        return dateAppointment;
-    }
-
-    public void setDateAppointment(Date dateAppointment) {
-        this.dateAppointment = dateAppointment;
-    }
-
     public abstract ServiceType getServiceType();
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

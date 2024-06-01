@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentServiceImp implements AppointmentService {
@@ -29,8 +30,9 @@ public class AppointmentServiceImp implements AppointmentService {
 
 
     @Override
-    public Appointment get(int id) {
-        Appointment appointment = appointmentDao.findById(id);
+    public Appointment get(int id) throws EdwardException{
+        //Appointment appointment = appointmentDao.findById(id);
+        Appointment appointment = Optional.ofNullable(appointmentDao.findById(id)).orElseThrow(EdwardException::new);
         return appointment;
     }
 
