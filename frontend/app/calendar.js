@@ -1,4 +1,5 @@
 import { getAppointments } from "./fetch-api.js";
+import { gotoAppointment, goto } from "./main.js";
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
@@ -8,7 +9,6 @@ let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 let today = new Date();
 
-import { gotoAppointment } from "./main.js";
 
 export function calendarHtml(container, appointment) {
     container.innerHTML = `
@@ -54,6 +54,7 @@ export function calendarHtml(container, appointment) {
                 </select>
                 <button class="defaultBtn" type="submit">Submit</button>
             </form>
+                <button id="cancelBtn">Cancel</button>
         </div>
     `;
     
@@ -72,6 +73,15 @@ export function calendarHtml(container, appointment) {
 
         console.log(appointment);
         gotoAppointment("/confirm", appointment)
+    });
+
+    const cancelBack = document.getElementById("cancelBtn");
+
+    cancelBack.addEventListener("click", event => {
+        event.preventDefault();
+
+        goto("/");
+
     });
 }
 
@@ -136,36 +146,36 @@ async function selectDate(event) {
 
     document.querySelectorAll('.date-cell').forEach(cell => cell.classList.remove('selected'));
     event.target.classList.add('selected');
-    const date = event.target.dataset.date; // Retrieve the date from the dataset
+    const date = (event.target.dataset.date).padStart(2, '0'); // Retrieve the date from the dataset
     document.getElementById('selected-date').value = `${date}/${monthNumeric}/${currentYear}`;
 
     const time = document.getElementById('time-slot');
     time.innerHTML = "";
 
     const response = await getAppointments();
-    //console.log(response);
 
-    response.forEach((element) => {
+    availableHours.forEach((element) => {
         const dateSelectedDate = date + "/" + monthNumeric + "/" + currentYear;
-        console.log(element);
-        console.log(dateSelectedDate);
+        let timeMatch = false;
 
-    
-            console.log(element.date);
-            for(var i=0; i < availableHours.length - 1; i++) {
-                console.log("ARRAY: " + availableHours);
+        
+        //console.log(element);
 
-                if(element.hour !== availableHours[i] && dateSelectedDate === element.date) {
-                    console.log("aaaaaaaaaaa ");
 
-                    const options = document.createElement("option");
-                    options.value = availableHours[i];
-                    options.innerText = availableHours[i];
-                    console.log(availableHours[i]);
-
-                    time.appendChild(options);
-                }
+        response.forEach((data) => {
+            if(data.date === dateSelectedDate && data.hour === element) {
+                timeMatch = true;
             }
+        })
+
+
+        if(timeMatch === false) {
+            const options = document.createElement("option");
+            options.value = element;
+            options.innerText = element;
+            time.appendChild(options);
+        }
+        
     });
 
 }

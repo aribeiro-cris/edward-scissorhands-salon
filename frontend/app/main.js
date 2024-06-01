@@ -1,5 +1,5 @@
 import { calendarHtml } from "./calendar.js";
-import {imageGeneratorAi, imageGeneratorAiOld} from "./ai-api.js"
+import {imageGeneratorAi } from "./ai-api.js";
 import { addAppointment } from "./fetch-api.js";
 
 //Mapping urls
@@ -8,6 +8,7 @@ const mapping = [
     {url:"/form", page: form},
     {url:"/confirm", page: confirms},
     {url:"/calendar", page: calendar},
+    {url:"/reject", page: reject}
 ]
 
 render();
@@ -51,12 +52,12 @@ function index(container){
     anchorDenied.addEventListener("click", event => {
         event.preventDefault();
 
-        goto("/")
+        goto("/reject")
     })
 
 }
 
-function goto(url){
+export function goto(url){
     //redirect to the correct page
     const map = mapping.find(element => element.url === url)
 
@@ -206,8 +207,20 @@ function form(container){
         }
     });
 
-    
+    const btnGoBack = document.createElement("button");
+    btnGoBack.innerText = "Cancel";
+    btnGoBack.setAttribute("id", "cancelBtn");
+
+    btnGoBack.addEventListener("click", event => {
+        event.preventDefault();
+
+        goto("/");
+
+    });
+
     form.appendChild(dateBtn);
+    form.appendChild(btnGoBack);
+
     formDiv.appendChild(form);
 
     container.appendChild(formDiv);
@@ -253,10 +266,9 @@ function confirms(container, appointment){
         event.preventDefault();
 
         if (commentsInput.checkValidity()) {
-            //const aimage = await imageGeneratorAiOld(commentsInput.value);
-            //const aimage = await imageGeneratorAi();
-            //console.log(aimage.artifacts[0].base64)
-            //img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
+            const aimage = await imageGeneratorAiOld(commentsInput.value);
+            console.log(aimage.artifacts[0].base64)
+            img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
             
             appointment.comment = commentsInput.value;
             console.log(appointment);
@@ -276,3 +288,21 @@ function calendar(container, appointment){
     calendarHtml(container, appointment);
 }
 
+function reject() {
+    const title = document.createElement("h1");
+    title.innerText = "Oh, we are so sad to see you go. Please get back later.";
+    container.appendChild(title);
+
+    const btnGoBack = document.createElement("button");
+    btnGoBack.innerText = "Go back";
+    btnGoBack.setAttribute("id", "cancelBtn");
+
+    btnGoBack.addEventListener("click", event => {
+        event.preventDefault();
+
+        goto("/");
+
+    });
+
+    container.appendChild(btnGoBack);
+}

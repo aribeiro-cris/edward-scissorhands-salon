@@ -69,6 +69,7 @@ h2 {
 
 img {
     border-radius: 10px;
+    cursor: pointer;
 }
 
 #btn{
@@ -136,6 +137,7 @@ img {
     padding: 2%;
     font-weight: bolder;
     margin-bottom: 4%;
+    cursor: pointer;
 }
 
 .form button:hover {
@@ -249,3 +251,16 @@ td.selected {
     background-color: #5A6A75;
     cursor: default;
 }
+
+#cancelBtn {
+    margin:0;
+    background-color: #869198;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+    font-weight: bolder;
+    font-size: 2vh;
+    cursor: pointer;
+}
+
