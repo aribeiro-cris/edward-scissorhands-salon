@@ -5,6 +5,8 @@ let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 let today = new Date();
 
+let monthNumeric = String(currentMonth + 1).padStart(2, '0');
+
 import { gotoAppointment } from "./main.js";
 
 export function calendarHtml(container, appointment) {
@@ -66,7 +68,7 @@ export function calendarHtml(container, appointment) {
         //alert(`Booked ${selectedDate} at ${timeSlot}`);
         appointment.date = selectedDate;
         appointment.hour = timeSlot;
-        //console.log(appointment)
+        console.log(appointment);
         gotoAppointment("/confirm", appointment)
     });
 }
@@ -131,5 +133,5 @@ function selectDate(event) {
     document.querySelectorAll('.date-cell').forEach(cell => cell.classList.remove('selected'));
     event.target.classList.add('selected');
     const date = event.target.dataset.date; // Retrieve the date from the dataset
-    document.getElementById('selected-date').value = `${monthNames[currentMonth]} ${date}, ${currentYear}`;
+    document.getElementById('selected-date').value = `${date}/${monthNumeric}/${currentYear}`;
 }
