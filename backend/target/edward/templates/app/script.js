@@ -68,7 +68,7 @@ import { gotoAppointment } from "./main.js";
         appointment.date = selectedDate;
         appointment.time = timeSlot;
         //console.log(appointment)
-        gotoAppointment("/confirm", appointment)
+        gotoAppointment("/edward/confirm", appointment)
     });
 //});
  }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface AppointmentService {
 
-    Appointment get(int id) ;
+    Appointment get(int id) throws EdwardException;
 
     List<Appointment> list();
 

@@ -2,6 +2,7 @@ package com.codeforall.online.edward.converters;
 
 import com.codeforall.online.edward.model.Appointment;
 import com.codeforall.online.edward.model.Client;
+import com.codeforall.online.edward.model.Coloring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,10 +27,10 @@ public class DtoToAppointment {
         client.setPhone(appointmentDto.getPhone_client());
 
         appointment = appointmentFactory.createAccount(appointmentDto.getServiceType());
-        appointment.setDateAppointment(appointmentDto.getDate_appointment());
         appointment.setClient(client);
-        appointment.setCreationTime(appointmentDto.getCreationTime());
-        appointment.setUpdateTime(appointmentDto.getUpdateTime());
+        appointment.setDate(appointmentDto.getDate());
+        appointment.setHour(appointmentDto.getHour());
+        appointment.setComment(appointmentDto.getComment());
 
         //if(appointmentDto.getId() != null){
             appointment.setId(appointmentDto.getId());
@@ -37,6 +38,5 @@ public class DtoToAppointment {
 
         return appointment;
     }
-
 
 }

@@ -20,13 +20,13 @@ public class AppointmentDto {
     //@Pattern(regexp = "^\\+?[0-9]*$", message = "Phone number contains invalid characters")
     private String phone_client;
 
-    private Date creationTime;
-
-    private Date updateTime;
-
     //@NotNull(message = "Date is mandatory")
     //@NotBlank(message = "Date is mandatory")
-    private Date date_appointment;
+    private String date;
+
+    private String hour;
+
+    private String comment;
 
     //@NotNull
     private ServiceType serviceType;
@@ -55,29 +55,6 @@ public class AppointmentDto {
         this.phone_client = phone_client;
     }
 
-    public Date getCreationTime() {
-        return creationTime;
-    }
-
-    public void setCreationTime(Date creationTime) {
-        this.creationTime = creationTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Date getDate_appointment() {
-        return date_appointment;
-    }
-
-    public void setDate_appointment(Date date_appointment) {
-        this.date_appointment = date_appointment;
-    }
 
     public Integer getId() {
         return id;
@@ -85,5 +62,29 @@ public class AppointmentDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }
