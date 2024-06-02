@@ -31,7 +31,6 @@ public class DtoToAppointment {
         //if(appointmentDto.getId() != null){
             appointment.setId(appointmentDto.getId());
         //}
-
         return appointment;
     }
 

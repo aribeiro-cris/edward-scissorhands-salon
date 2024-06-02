@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/edward/api/appointment";
+const url = "http://localhost:8081/edward/api/appointment";
 
 export const addAppointment = async (event, appointment) => {
     event.preventDefault();

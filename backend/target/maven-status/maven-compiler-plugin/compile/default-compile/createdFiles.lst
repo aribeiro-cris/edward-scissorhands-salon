@@ -7,7 +7,6 @@ com/codeforall/online/edward/model/appointment/StylingHaircut.class
 com/codeforall/online/edward/exceptions/EdwardException.class
 com/codeforall/online/edward/persistence/jpa/JpaTransactionManager.class
 com/codeforall/online/edward/controller/rest/MainRestController.class
-com/codeforall/online/edward/converters/AppointmentFactory$1.class
 com/codeforall/online/edward/persistence/SessionManager.class
 com/codeforall/online/edward/persistence/dao/AppointmentDao.class
 com/codeforall/online/edward/persistence/jpa/JpaSessionManager.class
@@ -17,12 +16,12 @@ com/codeforall/online/edward/controller/MainController.class
 com/codeforall/online/edward/persistence/dao/Dao.class
 com/codeforall/online/edward/model/ServiceType.class
 com/codeforall/online/edward/converters/AppointmentDto.class
-com/codeforall/online/edward/converters/AppointmentFactory.class
 com/codeforall/online/edward/persistence/dao/JpaAppointmentDao.class
+com/codeforall/online/edward/converters/AppointmentFactory.class
 com/codeforall/online/edward/model/Appointment.class
 com/codeforall/online/edward/model/Client.class
 com/codeforall/online/edward/converters/DtoToAppointment.class
-com/codeforall/online/edward/converters/AppointmentToDto.class
 com/codeforall/online/edward/model/appointment/Styling.class
+com/codeforall/online/edward/converters/AppointmentToDto.class
 com/codeforall/online/edward/model/appointment/ColoringHaircut.class
 com/codeforall/online/edward/model/appointment/Coloring.class

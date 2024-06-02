@@ -2,7 +2,6 @@ package com.codeforall.online.edward.converters;
 
 import com.codeforall.online.edward.model.Appointment;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
