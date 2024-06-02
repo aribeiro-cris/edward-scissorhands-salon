@@ -7,6 +7,7 @@ const availableHours = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "1
 
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
+
 let today = new Date();
 
 
@@ -42,15 +43,7 @@ export function calendarHtml(container, appointment) {
                 <input type="text" id="selected-date" readonly>
                 <label for="time-slot" class="sub-title-calendar">Time Slot:</label>
                 <select class="select" id="time-slot">
-                    <option value="09:00">09:00 AM</option>
-                    <option value="10:00">10:00 AM</option>
-                    <option value="11:00">11:00 AM</option>
-                    <option value="12:00">12:00 PM</option>
-                    <option value="13:00">01:00 PM</option>
-                    <option value="14:00">02:00 PM</option>
-                    <option value="15:00">03:00 PM</option>
-                    <option value="16:00">04:00 PM</option>
-                    <option value="17:00">05:00 PM</option>
+                
                 </select>
                 <button class="defaultBtn" type="submit">Submit</button>
             </form>
@@ -110,8 +103,9 @@ export function renderCalendar(month, year) {
 
                 cell.innerHTML = date;
                 cell.classList.add('date-cell');
-                
-                if(cellDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
+
+                // j === 0 is sunday, j === 6 is saturday, weekends no work
+                if((cellDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) || j === 0 || j === 6) {
                     cell.classList.add('disabled');
                 } else {
                     cell.dataset.date = date; // Store the date in the dataset
@@ -142,23 +136,26 @@ function changeMonth(delta) {
 }
 
 async function selectDate(event) {
-    let monthNumeric = String(currentMonth + 1).padStart(2, '0');
+    let monthNumericSelected = String(currentMonth + 1).padStart(2, '0');
 
     document.querySelectorAll('.date-cell').forEach(cell => cell.classList.remove('selected'));
     event.target.classList.add('selected');
-    const date = (event.target.dataset.date).padStart(2, '0'); // Retrieve the date from the dataset
-    document.getElementById('selected-date').value = `${date}/${monthNumeric}/${currentYear}`;
+    const daySelected = (event.target.dataset.date).padStart(2, '0'); // Retrieve the date from the dataset
+    document.getElementById('selected-date').value = `${daySelected}/${monthNumericSelected}/${currentYear}`;
 
     const time = document.getElementById('time-slot');
     time.innerHTML = "";
 
+    const todayComparasion = String(today.getDate()).padStart(2, '0') + "/" + String(today.getMonth() + 1).padStart(2, '0') + "/" + today.getFullYear();
+    const currentHour = new Date().getHours();
+
     const response = await getAppointments();
 
     availableHours.forEach((element) => {
-        const dateSelectedDate = date + "/" + monthNumeric + "/" + currentYear;
+        const dateSelectedDate = `${daySelected}/${monthNumericSelected}/${currentYear}`;
         let timeMatch = false;
+        let timePassed = false;
 
-        
         //console.log(element);
 
 
@@ -167,9 +164,12 @@ async function selectDate(event) {
                 timeMatch = true;
             }
         })
+        
+        if((dateSelectedDate === todayComparasion) && (currentHour > parseInt(element.split(":")) - 1)) {
+            timePassed = true;
+        }
 
-
-        if(timeMatch === false) {
+        if(timeMatch === false && timePassed === false) {
             const options = document.createElement("option");
             options.value = element;
             options.innerText = element;

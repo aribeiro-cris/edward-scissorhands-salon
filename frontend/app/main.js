@@ -170,10 +170,26 @@ function form(container){
     const serviceInputOption3 = document.createElement("option");
     serviceInputOption3.innerText = "Haircut";
 
+    const serviceInputOption4 = document.createElement("option");
+    serviceInputOption4.innerText = "Styling & Coloring";
+
+    const serviceInputOption5 = document.createElement("option");
+    serviceInputOption5.innerText = "Styling & Haircut";
+
+    const serviceInputOption6 = document.createElement("option");
+    serviceInputOption6.innerText = "Coloring & Haircut";
+
+    const serviceInputOption7 = document.createElement("option");
+    serviceInputOption7.innerText = "Styling, Coloring & Haircut";
+
     serviceInput.appendChild(serviceInputOptionNull);
     serviceInput.appendChild(serviceInputOption1);
     serviceInput.appendChild(serviceInputOption2);
     serviceInput.appendChild(serviceInputOption3);
+    serviceInput.appendChild(serviceInputOption4);
+    serviceInput.appendChild(serviceInputOption5);
+    serviceInput.appendChild(serviceInputOption6);
+    serviceInput.appendChild(serviceInputOption7);
 
     form.appendChild(service);
     form.appendChild(serviceInput);
@@ -266,7 +282,7 @@ function confirms(container, appointment){
         event.preventDefault();
 
         if (commentsInput.checkValidity()) {
-            const aimage = await imageGeneratorAiOld(commentsInput.value);
+            const aimage = await imageGeneratorAi(commentsInput.value);
             console.log(aimage.artifacts[0].base64)
             img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
             
