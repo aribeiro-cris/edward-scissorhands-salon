@@ -1,6 +1,7 @@
-import { calendarHtml } from "./calendar.js";
+import { calendarHtml, renderCalendar, list } from "./calendar.js";
 import {imageGeneratorAi } from "./ai-api.js";
-import { addAppointment } from "./fetch-api.js";
+import { addAppointment, appListFetch } from "./fetch-api.js";
+//import  {list} from "./appointments.js";
 
 //Mapping urls
 const mapping = [
@@ -8,7 +9,8 @@ const mapping = [
     {url:"/form", page: form},
     {url:"/confirm", page: confirms},
     {url:"/calendar", page: calendar},
-    {url:"/reject", page: reject}
+    {url:"/reject", page: reject},
+    {url:"/management", page: list}
 ]
 
 render();
@@ -52,7 +54,8 @@ function index(container){
     anchorDenied.addEventListener("click", event => {
         event.preventDefault();
 
-        goto("/reject")
+        //goto("/reject")
+        goto ("/management")
     })
 
 }
@@ -289,6 +292,7 @@ function confirms(container, appointment){
             appointment.comment = commentsInput.value;
             console.log(appointment);
             const response = await addAppointment(event, appointment);
+            goto("/")
         } else {
             commentsInput.reportValidity();
         }  

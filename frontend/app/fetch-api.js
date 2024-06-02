@@ -1,4 +1,4 @@
-const url = "http://localhost:8081/edward/api/appointment";
+const url = "http://localhost:8080/edward/api/appointment";
 
 export const addAppointment = async (event, appointment) => {
     event.preventDefault();
@@ -19,7 +19,7 @@ export const addAppointment = async (event, appointment) => {
 };
 
 
-export const getAppointments = async (event, appointment) => {
+export const getAppointments = async () => {
 
     const response = await fetch(url);
 
@@ -31,4 +31,12 @@ const DATE_HOURS = response => response.map(appointment => ({
         date: appointment.date,
         hour: appointment.hour
     })
+
 );
+
+
+export const appListFetch = async () => {
+const response = await fetch (url )
+const data = await response.json();
+return data;
+}
