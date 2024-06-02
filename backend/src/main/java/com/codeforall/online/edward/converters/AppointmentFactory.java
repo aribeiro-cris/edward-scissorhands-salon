@@ -1,9 +1,8 @@
 package com.codeforall.online.edward.converters;
 
 import com.codeforall.online.edward.model.*;
+import com.codeforall.online.edward.model.appointment.*;
 import org.springframework.stereotype.Component;
-
-import static com.codeforall.online.edward.model.ServiceType.*;
 
 @Component
 public class AppointmentFactory {
@@ -13,12 +12,16 @@ public class AppointmentFactory {
      *
      * @return the new appointment
      */
-    public Appointment createAccount(ServiceType appType) {
+    public Appointment createAccount(String appType) {
 
         Appointment newApp = switch (appType) {
-            case HAIRCUT -> new Haircut();
-            case STYLING -> new Styling();
-            case COLORING -> new Coloring();
+            case "HAIRCUT" -> new Haircut();
+            case "STYLING" -> new Styling();
+            case "COLORING" -> new Coloring();
+            case "STYLING & COLORING" -> new StylingColoring();
+            case "STYLING & HAIRCUT" -> new StylingHaircut();
+            case "COLORING & HAIRCUT" -> new ColoringHaircut();
+            case "STYLING, COLORING & HAIRCUT" -> new StylingColoringHaircut();
             default -> null;
         };
         return newApp;

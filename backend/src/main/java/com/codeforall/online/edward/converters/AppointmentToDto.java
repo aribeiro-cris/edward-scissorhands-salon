@@ -16,7 +16,7 @@ public class AppointmentToDto {
         appointmentDto.setId(appointment.getId());
         appointmentDto.setName_client(appointment.getClient().getName());
         appointmentDto.setPhone_client(appointment.getClient().getPhone());
-        appointmentDto.setServiceType(appointment.getServiceType());
+        appointmentDto.setServiceType(appointment.getServiceType().toString());
         appointmentDto.setDate(appointment.getDate());
         appointmentDto.setHour(appointment.getHour());
         appointmentDto.setComment(appointment.getComment());

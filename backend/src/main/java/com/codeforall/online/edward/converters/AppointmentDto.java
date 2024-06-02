@@ -29,13 +29,13 @@ public class AppointmentDto {
     private String comment;
 
     //@NotNull
-    private ServiceType serviceType;
+    private String serviceType;
 
-    public ServiceType getServiceType(){
+    public String getServiceType(){
         return serviceType;
     }
 
-    public void setServiceType(ServiceType serviceType){
+    public void setServiceType(String serviceType){
         this.serviceType = serviceType;
     }
 

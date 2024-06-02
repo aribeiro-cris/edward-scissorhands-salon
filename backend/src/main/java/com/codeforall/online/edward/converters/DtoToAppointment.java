@@ -2,12 +2,8 @@ package com.codeforall.online.edward.converters;
 
 import com.codeforall.online.edward.model.Appointment;
 import com.codeforall.online.edward.model.Client;
-import com.codeforall.online.edward.model.Coloring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.time.Instant;
-import java.util.Date;
 
 @Component
 public class DtoToAppointment {

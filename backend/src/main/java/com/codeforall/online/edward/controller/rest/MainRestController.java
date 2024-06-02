@@ -5,7 +5,6 @@ import com.codeforall.online.edward.converters.AppointmentToDto;
 import com.codeforall.online.edward.converters.DtoToAppointment;
 import com.codeforall.online.edward.exceptions.EdwardException;
 import com.codeforall.online.edward.model.Appointment;
-import com.codeforall.online.edward.model.Styling;
 import com.codeforall.online.edward.service.AppointmentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
