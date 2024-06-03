@@ -22,11 +22,11 @@ window.addEventListener('popstate',render);
 
 function index(container){
     const title = document.createElement("h1");
-    title.innerText = "Welcome to Scissorhands Saloon";
+    title.innerText = "Welcome to Scissorhands Salon";
     title.classList.add("firstpage-title");
 
     const anchorGoogleMaps = document.createElement("a");
-    anchorGoogleMaps.innerText = "Click here to check the Saloon address";
+    anchorGoogleMaps.innerText = "Click here to check the address";
     anchorGoogleMaps.classList.add("anchorGoogleMaps");
 
     anchorGoogleMaps.addEventListener("click", event => {
@@ -325,7 +325,7 @@ function calendar(container, appointment){
 
 function reject() {
     const title = document.createElement("h1");
-    title.innerText = "Oh, we are so sad to see you go. Please get back later.";
+    title.innerText = "Regrettably, we bid you farewell. Please consider returning at a later time.";
     container.appendChild(title);
 
     const btnGoBack = document.createElement("button");

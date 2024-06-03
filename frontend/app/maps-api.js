@@ -4,7 +4,7 @@ export function initMap() {
     console.log("Google Maps API testing");
 
     const title = document.createElement("h2");
-    title.innerText = "Scissorhands Saloon Address";
+    title.innerText = "Scissorhands Salon Address";
     container.appendChild(title);
 
     const addressTitle = document.createElement("h3");
@@ -23,7 +23,7 @@ export function initMap() {
 
     const marker = new google.maps.Marker({
         position: { lat: 41.17857455824021, lng: -8.586959639625881 }, //position of the specific address;
-        title: "This is Scissorhands Saloon Address",
+        title: "This is Scissorhands Salon Address",
     });
 
     marker.setMap(map); //add the marker to the map
