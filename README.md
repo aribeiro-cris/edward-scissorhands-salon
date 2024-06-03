@@ -20,3 +20,13 @@ JavaScript Frontend: HTML/CSS/JS interface with Fetch API for backend communicat
 - Upon submitting the form, a POST request is sent to the backend to save the appointment details in the database.
 - The frontend also integrates with an AI image generator API to allow clients to visualize their desired hairstyle.
 - Additionally, it utilizes the Google Maps API to display the location of Edward Scissorhands' hair salon.
+
+## Links to APIs
+- AI image generator text-to-image, provided by https://platform.stability.ai/.
+- Google Maps, provided by https://console.cloud.google.com/.
+
+## List of contributors
+- Andreia Ribeiro - https://github.com/aribeiro-cris
+- Filipe Silva - https://github.com/filipejosilva
+- João Carvalho - https://github.com/joaoMiguelCarvalho
+- Pedro Nunes - https://github.com/Tariknunes14
