@@ -1,4 +1,4 @@
-import { goto } from "./main.js";
+import { goto } from "../main.js";
 
 export function initMap() {
     console.log("Google Maps API testing");

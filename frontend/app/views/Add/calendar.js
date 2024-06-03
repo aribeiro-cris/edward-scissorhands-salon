@@ -1,5 +1,6 @@
-import { appListFetch, getAppointments } from "./fetch-api.js";
-import { gotoAppointment, goto } from "./main.js";
+//Simililar to management
+import { appListFetch, getAppointments } from "../../services/fetch-api.js";
+import { gotoAppointment, goto } from "../../main.js";
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
@@ -68,14 +69,16 @@ export function calendarHtml(container, appointment) {
         gotoAppointment("/confirm", appointment)
     });
 
-    const cancelBack = document.getElementById("cancelBtn");
+    cancelBtn();
+
+    /*const cancelBack = document.getElementById("cancelBtn");
 
     cancelBack.addEventListener("click", event => {
         event.preventDefault();
 
         goto("/");
 
-    });
+    });*/
 }
 
 export function renderCalendar(month, year) {
@@ -177,128 +180,18 @@ async function selectDate(event) {
         }
         
     });
-
-}
-export async function list (container){
-    container.innerHTML = `
-    <div class="calendar">
-        <div class="header">
-            <button class="defaultBtn" id="prev">Prev</button>
-            <h1 id="month-year"></h1>
-            <button class="defaultBtn" id="next">Next</button>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Sun</th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                </tr>
-            </thead>
-            <tbody id="calendar-body">
-
-            </tbody>
-        </table>
-        <div id = "management">
-
-        </div>
-    </div>
-    
-`;
-renderCalendarManagement (currentMonth,currentYear);
-document.getElementById('prev').addEventListener('click', () => changeMonthManagement(-1));
-    document.getElementById('next').addEventListener('click', () => changeMonthManagement(1));
 }
 
-function renderCalendarManagement(month, year) {
-    const calendarBody = document.getElementById('calendar-body');
-    calendarBody.innerHTML = '';
+function cancelBtn(){
 
-    document.getElementById('month-year').innerText = `${monthNames[month]} ${year}`;
+    const cancelBack = document.getElementById("cancelBtn");
 
-    const firstDay = new Date(year, month, 1).getDay();
-    const totalDays = daysInMonth(month, year);
+    cancelBack.addEventListener("click", event => {
+        event.preventDefault();
 
-    let date = 1;
-    for (let i = 0; i < 6; i++) {
-        const row = document.createElement('tr');
+        goto("/");
 
-        for (let j = 0; j < 7; j++) {
-            const cell = document.createElement('td');
+    });
 
-            if (i === 0 && j < firstDay) {
-                cell.innerHTML = '';
-            } else if (date > totalDays) {
-                cell.innerHTML = '';
-            } else {
-                const cellDate = new Date(year, month, date);
-
-                cell.innerHTML = date;
-                cell.classList.add('date-cell');
-
-                // j === 0 is sunday, j === 6 is saturday, weekends no work
-                if((cellDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) || j === 0 || j === 6) {
-                    cell.classList.add('disabled');
-                } else {
-                    cell.dataset.date = date; // Store the date in the dataset
-                    cell.addEventListener('click', selectDateManagement);
-                }
-                date++;
-            }
-
-            row.appendChild(cell);
-        }
-
-        calendarBody.appendChild(row);
-    }
-}
-
-async function selectDateManagement(event) {
-    let monthNumericSelected = String(currentMonth + 1).padStart(2, '0');
-
-    document.querySelectorAll('.date-cell').forEach(cell => cell.classList.remove('selected'));
-    event.target.classList.add('selected');
-    const daySelected = (event.target.dataset.date).padStart(2, '0'); // Retrieve the date from the dataset
-    
-    const dateSelectedDate = `${daySelected}/${monthNumericSelected}/${currentYear}`;
-    const todayComparasion = String(today.getDate()).padStart(2, '0') + "/" + String(today.getMonth() + 1).padStart(2, '0') + "/" + today.getFullYear();
-    
-
-    const response = await appListFetch();
-    const container = document.getElementById("container")
-    const div = document.getElementById("management");
-    div.innerHTML = ""
-    response.forEach(element =>{
-         
-        if (element.date === dateSelectedDate){
-            
-           
-           const divappointment = document.createElement ("div");
-            const p=document.createElement ("p");
-            p.innerText = element.name_client + " " + element.phone_client + " " + element.serviceType + " " + element.hour + " " + element.comment;
-            divappointment.appendChild  (p)
-            div.appendChild (divappointment);
-        }
-        container.appendChild (div);
-
-    }) 
-   
-}
-
-function changeMonthManagement(delta) {
-    currentMonth += delta;
-
-    if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
-    } else if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
-    }
-
-    renderCalendarManagement(currentMonth, currentYear);
+    return cancelBack;
 }
