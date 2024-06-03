@@ -2,6 +2,8 @@ import { calendarHtml, renderCalendar, list } from "./calendar.js";
 import {imageGeneratorAi } from "./ai-api.js";
 import { addAppointment, appListFetch } from "./fetch-api.js";
 //import  {list} from "./appointments.js";
+import { initMap } from "./maps-api.js";
+
 
 //Mapping urls
 const mapping = [
@@ -10,7 +12,8 @@ const mapping = [
     {url:"/confirm", page: confirms},
     {url:"/calendar", page: calendar},
     {url:"/reject", page: reject},
-    {url:"/management", page: list}
+    {url:"/management", page: list},
+    {url: "/google-map", page: map}
 ]
 
 render();
@@ -21,6 +24,17 @@ function index(container){
     const title = document.createElement("h1");
     title.innerText = "Welcome to Scissorhands Saloon";
     title.classList.add("firstpage-title");
+
+    const anchorGoogleMaps = document.createElement("a");
+    anchorGoogleMaps.innerText = "Click here to check the Saloon address";
+    anchorGoogleMaps.classList.add("anchorGoogleMaps");
+
+    anchorGoogleMaps.addEventListener("click", event => {
+        event.preventDefault();
+
+        goto("/google-map")
+    });
+
     const question = document.createElement("h2");
     question.innerText = "Would you like to craft your perfect look with us?";
 
@@ -43,6 +57,7 @@ function index(container){
     divAnchor.appendChild(anchorDenied);
 
     container.appendChild(title)
+    container.appendChild(anchorGoogleMaps);
     container.appendChild(question)
     container.appendChild(divAnchor)
 
@@ -325,4 +340,9 @@ function reject() {
     });
 
     container.appendChild(btnGoBack);
+}
+
+function map() {
+    
+    initMap();
 }

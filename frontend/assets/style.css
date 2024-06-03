@@ -264,3 +264,19 @@ td.selected {
     cursor: pointer;
 }
 
+#map {
+    height: 100%;
+    margin-bottom: 2%;
+}
+
+.anchorGoogleMaps {
+    cursor: pointer;
+    color: #454A4D;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.firstpage-title {
+    padding: 0;
+}

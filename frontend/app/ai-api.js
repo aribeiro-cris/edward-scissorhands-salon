@@ -1,5 +1,5 @@
 //DELETE API KEY before publishing on github
-const API_KEY = "sk-eGEExWhw7cwk9kQy0GnOOwbPU79TIC9THC5NRzNex3BgQ5IT"; //api_key from Andreia
+const API_KEY = ""; //add here your api_key
 
 export async function imageGeneratorAi(textToImage){
    
