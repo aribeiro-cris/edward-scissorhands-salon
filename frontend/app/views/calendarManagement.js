@@ -1,5 +1,5 @@
 import { appListFetch} from "../services/fetch-api.js";
-import {goto} from "../main.js";
+import {goto, gotoManagement} from "../main.js";
 
 import { monthNames, daysInMonth} from "../services/constCalendar.js";
 
@@ -218,6 +218,10 @@ function btnManagement(id, type){
         return btn
     }else if(type ==="Edit"){
         btn.innerText = type;
+        btn.addEventListener ("click", event => {
+        event.preventDefault();
+        gotoManagement("/edit", id);    
+        })
         //btn.classList.add("defaultBtn")
         return btn
     }

@@ -17,8 +17,8 @@ const mapping = [
     {url:"/reject", page: reject},
     {url:"/management", page: list},
     {url: "/google-map", page: initMap},
-    {url: "/edit", page: initMap},
-    {url: "/cancel", page: initMap}
+    {url: "/edit", page: edit},
+    {url: "/cancel", page: cancel}
 ]
 
 render();
@@ -77,4 +77,26 @@ function render(){
 
     map.page(container);
 
+}
+export function gotoManagement(url, object){
+    //redirect to the correct page
+    const map = mapping.find(element => element.url === url)
+
+    if(!map){
+        goto("/");
+        return;
+    }
+
+
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+
+    window.history.pushState("","", url);
+    if(url === "/edit"){
+        edit(container, object)
+    }
+    if(url === "/cancel"){
+        management(container, object)
+    }
+    
 }

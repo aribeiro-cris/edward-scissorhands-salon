@@ -47,3 +47,20 @@ export const appGet = async (id) =>{
     const data = await response.json();
     return data
 }
+
+export const editapp = async (appointment) => {
+const urlId = url + "/" + appointment.id;
+console.log(appointment);
+console.log(urlId);
+const param = { headers: {
+        'Accept': "application/json, text/plain, */*",
+        'Content-Type': "application/json;charset=utf-8"  
+    },
+    body: JSON.stringify(appointment),
+    method: "PUT"
+};
+const response = await fetch (urlId, param);
+const data = response.json();
+console.log(data);
+
+}
