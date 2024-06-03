@@ -40,3 +40,10 @@ const response = await fetch (url )
 const data = await response.json();
 return data;
 }
+
+export const appGet = async (id) =>{
+    const urlId= url + `/${id}`
+    const response= await fetch(urlId)
+    const data = await response.json();
+    return data
+}

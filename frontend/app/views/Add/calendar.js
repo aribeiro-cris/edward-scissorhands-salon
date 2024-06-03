@@ -1,16 +1,12 @@
-//Simililar to management
-import { appListFetch, getAppointments } from "../../services/fetch-api.js";
+
+import {getAppointments } from "../../services/fetch-api.js";
 import { gotoAppointment, goto } from "../../main.js";
 
-const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
-const availableHours = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"];
+import { monthNames, daysInMonth, availableHours} from "../../services/constCalendar.js";
 
-let currentMonth = new Date().getMonth();
-let currentYear = new Date().getFullYear();
-
-let today = new Date();
-
+export let currentMonth = new Date().getMonth();
+export let currentYear = new Date().getFullYear();
+export let today = new Date();
 
 export function calendarHtml(container, appointment) {
     container.innerHTML = `
@@ -70,15 +66,6 @@ export function calendarHtml(container, appointment) {
     });
 
     cancelBtn();
-
-    /*const cancelBack = document.getElementById("cancelBtn");
-
-    cancelBack.addEventListener("click", event => {
-        event.preventDefault();
-
-        goto("/");
-
-    });*/
 }
 
 export function renderCalendar(month, year) {

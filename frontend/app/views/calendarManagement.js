@@ -1,14 +1,12 @@
-import { appListFetch, getAppointments } from "../services/fetch-api.js";
+import { appListFetch} from "../services/fetch-api.js";
 import {goto} from "../main.js";
 
-const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
-const availableHours = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"];
+import { monthNames, daysInMonth} from "../services/constCalendar.js";
 
-let currentMonth = new Date().getMonth();
-let currentYear = new Date().getFullYear();
+export let currentMonth = new Date().getMonth();
+export let currentYear = new Date().getFullYear();
 
-let today = new Date();
+export let today = new Date();
 
 export async function list (container){
     container.innerHTML = `

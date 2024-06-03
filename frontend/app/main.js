@@ -1,10 +1,12 @@
-import { calendarHtml, renderCalendar} from "./views/Add/calendar.js";
+import {calendarHtml} from "./views/Add/calendar.js";
 import {list} from "./views/calendarManagement.js";
 import  {form} from "./views/Add/form.js";
 import  {confirms} from "./views/Add/confirm.js";
 import  {index} from "./views/index.js";
 import  {reject} from "./views/reject.js";
 import {initMap} from "./views/maps-api.js"
+import {edit} from "./views/Edit.js"
+import {cancel} from "./views/cancel.js"
 
 //Mapping urls
 const mapping = [
@@ -14,7 +16,9 @@ const mapping = [
     {url:"/calendar", page: calendarHtml},
     {url:"/reject", page: reject},
     {url:"/management", page: list},
-    {url: "/google-map", page: initMap}
+    {url: "/google-map", page: initMap},
+    {url: "/edit", page: initMap},
+    {url: "/cancel", page: initMap}
 ]
 
 render();
