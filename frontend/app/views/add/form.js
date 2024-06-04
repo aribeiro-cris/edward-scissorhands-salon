@@ -1,4 +1,5 @@
 import { gotoAppointment, goto } from "../../main.js";
+const arrayservice = ["Styling", "Haircut","Coloring", "Styling & Coloring","Styling & Haircut","Coloring & Haircut","Styling & Coloring & Haircut"];
 
 export function form(container){
     const title = document.createElement("h1");
@@ -48,35 +49,7 @@ export function form(container){
     serviceInputOptionNull.innerText = "--Select option--";
     serviceInputOptionNull.value = "";
 
-    const serviceInputOption1 = document.createElement("option");
-    serviceInputOption1.innerText = "Styling";
-
-    const serviceInputOption2 = document.createElement("option");
-    serviceInputOption2.innerText = "Coloring";
-
-    const serviceInputOption3 = document.createElement("option");
-    serviceInputOption3.innerText = "Haircut";
-
-    const serviceInputOption4 = document.createElement("option");
-    serviceInputOption4.innerText = "Styling & Coloring";
-
-    const serviceInputOption5 = document.createElement("option");
-    serviceInputOption5.innerText = "Styling & Haircut";
-
-    const serviceInputOption6 = document.createElement("option");
-    serviceInputOption6.innerText = "Coloring & Haircut";
-
-    const serviceInputOption7 = document.createElement("option");
-    serviceInputOption7.innerText = "Styling, Coloring & Haircut";
-
-    serviceInput.appendChild(serviceInputOptionNull);
-    serviceInput.appendChild(serviceInputOption1);
-    serviceInput.appendChild(serviceInputOption2);
-    serviceInput.appendChild(serviceInputOption3);
-    serviceInput.appendChild(serviceInputOption4);
-    serviceInput.appendChild(serviceInputOption5);
-    serviceInput.appendChild(serviceInputOption6);
-    serviceInput.appendChild(serviceInputOption7);
+    selectpopulate(serviceInput)
 
     form.appendChild(service);
     form.appendChild(serviceInput);
@@ -126,4 +99,13 @@ export function form(container){
     formDiv.appendChild(form);
 
     container.appendChild(formDiv);
+}
+
+function selectpopulate(select){
+
+    arrayservice.forEach(element => {
+        const option = document.createElement ("option")
+        option.innerText = element;
+        select.appendChild (option);
+    });
 }
