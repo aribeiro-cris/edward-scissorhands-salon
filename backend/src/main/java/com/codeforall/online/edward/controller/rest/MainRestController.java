@@ -27,7 +27,6 @@ public class MainRestController {
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", ""})
     public ResponseEntity<List<AppointmentDto>> appList(){
-        //List<Appointment>  list = appointmentService.list();
         List<AppointmentDto>  list = appointmentToDto.convertList(appointmentService.list());
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
@@ -83,11 +82,6 @@ public class MainRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Appointment updateApp = dtoToAppointment.convert(appointmentDto);
-
-        //if(updateApp.getId() != null){
-            //return new  ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        //
-        //}
 
         updateApp.setClient(updateApp.getClient());
 

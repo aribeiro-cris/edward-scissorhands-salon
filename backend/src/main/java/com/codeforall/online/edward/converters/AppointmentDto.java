@@ -1,34 +1,13 @@
 package com.codeforall.online.edward.converters;
 
-import com.codeforall.online.edward.model.ServiceType;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-
-import java.util.Date;
-
 public class AppointmentDto {
 
     private Integer id;
-
-    //@NotNull(message = "Name is mandatory")
-    //@NotBlank(message = "Name is mandatory")
-    //@Size(min = 3, max = 64)
     private String name_client;
-
-    //@Pattern(regexp = "^\\+?[0-9]*$", message = "Phone number contains invalid characters")
     private String phone_client;
-
-    //@NotNull(message = "Date is mandatory")
-    //@NotBlank(message = "Date is mandatory")
     private String date;
-
     private String hour;
-
     private String comment;
-
-    //@NotNull
     private String serviceType;
 
     public String getServiceType(){

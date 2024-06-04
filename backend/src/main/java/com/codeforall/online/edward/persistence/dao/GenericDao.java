@@ -1,6 +1,5 @@
 package com.codeforall.online.edward.persistence.dao;
 
-import com.codeforall.online.edward.model.Appointment;
 import com.codeforall.online.edward.persistence.jpa.JpaSessionManager;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaQuery;

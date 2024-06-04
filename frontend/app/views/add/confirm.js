@@ -43,9 +43,9 @@ export function confirms(container, appointment){
         event.preventDefault();
 
         if (commentsInput.checkValidity()) {
-            //const aimage = await imageGeneratorAi(commentsInput.value);
-            //console.log(aimage.artifacts[0].base64)
-            //img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
+            const aimage = await imageGeneratorAi(commentsInput.value);
+            console.log(aimage.artifacts[0].base64)
+            img.src= "data:image/jpg;base64," + aimage.artifacts[0].base64;
             
             appointment.comment = commentsInput.value;
             console.log(appointment);
