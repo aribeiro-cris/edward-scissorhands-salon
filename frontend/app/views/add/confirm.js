@@ -52,7 +52,7 @@ export function confirms(container, appointment){
             const response = await addAppointment(event, appointment);
             setTimeout(() =>{
                 goto("/")
-            }, 10000);//30000 is seconds 30 and its too much
+            }, 30000);//30000 is seconds 30 and its too much
         } else {
             commentsInput.reportValidity();
         }  

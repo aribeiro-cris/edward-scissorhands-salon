@@ -1,22 +1,80 @@
 body {
-    margin: 0px;
+    margin: 4%;
     padding: 0px;
     align-content: center;
-}
-
-#homepage{
-    background-color: #202020;
-    color: whitesmoke;
-    font-family: Arial, Helvetica, sans-serif
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, 
+        #2F4F4F, 
+        #191970, 
+        #708090, 
+        #000000);
+    color: #F5F5F5;
+    background-size: 400% 400%;
+	height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #container{
+    margin: 4%;
+    padding: 4%;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    color: #202020;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+    text-align: center;
     width: 50%;
-    margin-left: 25%;
+    height: auto;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 6vh;
+    padding: 3%;
+}
+
+#month-year {
+    font-size: 4vh;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+h2 {
+    font-weight: 750;
+    font-size: 4vh;
+}
+
+.title-book-date {
+    font-weight: 900;
+    font-size: 4vh;
+}
+
+.title-edit-appointment {
+    font-size: 3vh;
+    font-weight: 700;
+}
+
+.sub-title-calendar {
+    font-weight: bolder;
+    font-size: 2vh;
+}
+
+.text-confirmation {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1%;
+    font-size: 3vh;
+}
+
+img {
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 #btn{
@@ -24,53 +82,67 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 2vh
+    gap: 4vh;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    align-self: flex-start;
     padding-top: 5%;
 }
 
 .form input {
-    width: 200%;
     margin-top: 5%;
     margin-bottom: 10%;
     border: none;
     border-radius: 5px;
-    padding: 3%;
-    background-color: #454A4D;
+    padding: 7%;
+    background-color: #8D9DA8;
     color: white;
+    font-size: 2vh;
 }
 
 .form-label {
-    font-weight: bold;
-    margin-top: 5%;
+    font-weight: bolder;
+    margin: 0;
+    width: 100%;
+    font-size: 2vh;
+    color: #202020;
 }
 
 .form select {
-    background-color: #454A4D;
+    background-color: #8D9DA8;
     color: white;
     width: 100%;
     margin-top: 5%;
-    padding: 2%;
+    padding: 7%;
     border: none;
     border-radius: 5px;
+    font-size: 2vh;
 }
 
 .form button {
-    background-color: white;
+    background-color: #5A6A75;
+    color: white;
     border: none;
     border-radius: 5px;
-    padding: 3%;
+    padding: 7%;
     font-weight: bold;
-    margin-top: 10%;
-    align-self: flex-end;
+    font-size: 2vh;
+    margin-top: 20%;
+    align-self: center;
     margin-bottom: 10%;
+}
+
+.aiBtn {
+    background-color: #5A6A75;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 2%;
+    font-weight: bolder;
+    margin-bottom: 4%;
+    cursor: pointer;
 }
 
 .form button:hover {
@@ -97,8 +169,8 @@ table {
     width: 100%;
     max-width: 600px;
     margin-top: 20px;
-    
     color: white;
+    background-color: #8D9DA8;
 }
 
 th, td {
@@ -109,7 +181,7 @@ th, td {
 }
 
 th {
-    background-color: #454A4D;
+    background-color: #5A6A75;
 }
 
 td {
@@ -117,12 +189,12 @@ td {
 }
 
 td:hover {
-    background-color: #454A4D;
+    background-color: #5A6A75;
 }
 
 td.selected {
     background-color: #a0c4ff;
-    background-color:darkgray;
+    background-color:#5A6A75;
 }
 
 .booking-form {
@@ -132,17 +204,37 @@ td.selected {
 }
 
 .defaultBtn{
-    background-color: white;
+    background-color: #5A6A75;
     border: none;
     border-radius: 5px;
     padding: 3%;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 2vh;
     margin-top: 10%;
     margin-bottom: 10%;
+    color: whitesmoke;
 }
 
 .defaultBtn:hover{
-    background-color:lightgrey;
+    background-color:#5A6A75;
+    cursor: pointer;
+}
+
+.managementBtn {
+    background-color: #5A6A75;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+    margin-right: 2%;
+    font-weight: bolder;
+    font-size: 2vh;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    color: whitesmoke;
+}
+
+.managementBtn:hover{
+    background-color:#5A6A75;
     cursor: pointer;
 }
 
@@ -155,11 +247,6 @@ td.selected {
     border: none;
     border-radius: 5px;
 }
-/*form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}*/
 
 .commentsInput {
     width: 50%;
@@ -167,18 +254,83 @@ td.selected {
     border-radius: 5px;
     padding: 3%;
     font-weight: bold;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    background-color: #454A4D;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: #8D9DA8;
     color: white;
 }
 
 .containerComment {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    background-color: white;
+    align-items: center;
+    justify-content: center;
     color: #454A4D;
-    padding: 5%;
     border-radius: 5px;
+    overflow: auto;
+}
+
+.disabled {
+    background-color: #5A6A75;
+    cursor: default;
+}
+
+#cancelBtn {
+    margin:0;
+    background-color: #869198;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+    font-weight: bolder;
+    font-size: 2vh;
+    cursor: pointer;
+}
+
+#map {
+    height: 100%;
+    margin-bottom: 2%;
+}
+
+.anchorGoogleMaps {
+    cursor: pointer;
+    color: #454A4D;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.firstpage-title {
+    padding: 0;
+}
+
+#appointments{
+    width: 100%;
+    background-color: whitesmoke;
+    color: #454A4D;
+    max-width: 100%;
+    margin-bottom: 2vh;
+}
+
+#appointments thead{
+    font-weight: bold;
+}
+
+#appointments th{
+    border: 0px;
+    border-bottom: 1px solid #454A4D;
+}
+
+#appointments td{
+    border: 0px;
+    border-bottom: 1px solid #454A4D;
+}
+
+#appointments td:hover{
+    cursor: auto;
+    background-color: whitesmoke;
+}
+
+#sub-title-calendar {
+    margin-top: 8%;
 }
