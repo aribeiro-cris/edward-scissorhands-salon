@@ -10,9 +10,9 @@ const arrayservice = ["Styling", "Haircut","Coloring", "Styling & Coloring","Sty
 export async function edit(container, id){
     console.log(id);
     const data = await appGet (id);
-    const title = document.createElement("h1");
-    title.innerText = "Appointments information to edit";
-    container.appendChild(title);
+    //const title = document.createElement("h1");
+    //title.innerText = "Edit the appointment";
+    //container.appendChild(title);
 
     const formDiv = document.createElement("div");
     const form = document.createElement("form");
@@ -90,7 +90,7 @@ function createCalendar(){
         </table>
     </div>
     <div class="booking-form">
-        <h2 class ="title-book-date">Edit Appointment</h2>
+        <h2 class ="title-edit-appointment">Edit Appointment</h2>
         <form class="form" id="booking-form">
             <label for="selected-date" class="sub-title-calendar">Date:</label>
             <input type="text" id="selected-date" readonly>
@@ -98,7 +98,7 @@ function createCalendar(){
             <select class="select" id="time-slot">
             
             </select>
-            <label>Serivce Type</label>
+            <label class="sub-title-calendar" id="sub-title-calendar">Service Type:</label>
             <select class="select" id="select">
             
             </select>

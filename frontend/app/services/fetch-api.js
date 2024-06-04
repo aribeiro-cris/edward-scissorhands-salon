@@ -49,18 +49,33 @@ export const appGet = async (id) =>{
 }
 
 export const editapp = async (appointment) => {
-const urlId = url + "/" + appointment.id;
-console.log(appointment);
-console.log(urlId);
-const param = { headers: {
-        'Accept': "application/json, text/plain, */*",
-        'Content-Type': "application/json;charset=utf-8"  
-    },
-    body: JSON.stringify(appointment),
-    method: "PUT"
-};
-const response = await fetch (urlId, param);
-const data = response.json();
-console.log(data);
+    const urlId = url + "/" + appointment.id;
+    console.log(appointment);
+    console.log(urlId);
 
+    const param = { headers: {
+            'Accept': "application/json, text/plain, */*",
+            'Content-Type': "application/json;charset=utf-8"  
+        },
+        body: JSON.stringify(appointment),
+        method: "PUT"
+    };
+
+    const response = await fetch (urlId, param);
+    const data = response.json();
+    console.log(data);
+}
+
+export const deleteApp = async (id) => {
+    const urlId = url + "/" + id;
+
+    const param = { headers: {
+            'Content-Type': "application/json;charset=utf-8"  
+        },
+        method: "DELETE"
+    };
+
+    const response = await fetch (urlId, param);
+    const data = response.json();
+    console.log(data);
 }

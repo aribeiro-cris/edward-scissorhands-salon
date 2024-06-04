@@ -1,4 +1,4 @@
-import { appListFetch} from "../services/fetch-api.js";
+import { appListFetch, deleteApp} from "../services/fetch-api.js";
 import {goto, gotoManagement} from "../main.js";
 
 import { monthNames, daysInMonth} from "../services/constCalendar.js";
@@ -201,7 +201,7 @@ function objectToArray(object){
 
 function cellInsertBtn(cellText){
     const cell = document.createElement("td");
-    cell.appendChild(btnManagement(cellText, "Cancel"));
+    cell.appendChild(btnManagement(cellText, "Delete"));
     cell.appendChild(btnManagement(cellText, "Edit"));
     return cell;
 }
@@ -211,10 +211,16 @@ function btnManagement(id, type){
 
     console.log(id)
 
-    if(type === "Cancel"){
+    if(type === "Delete"){
         //Create page for delete and Edit
         btn.innerText = type;
-        //btn.classList.add("defaultBtn")
+        btn.addEventListener("click", async event => {
+
+            event.preventDefault();
+            await deleteApp(id);
+            goto("/");
+        })
+        btn.classList.add("managementBtn");
         return btn
     }else if(type ==="Edit"){
         btn.innerText = type;
@@ -222,7 +228,7 @@ function btnManagement(id, type){
         event.preventDefault();
         gotoManagement("/edit", id);    
         })
-        //btn.classList.add("defaultBtn")
+        btn.classList.add("managementBtn");
         return btn
     }
 }

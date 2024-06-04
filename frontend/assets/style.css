@@ -55,6 +55,11 @@ h2 {
     font-size: 4vh;
 }
 
+.title-edit-appointment {
+    font-size: 3vh;
+    font-weight: 700;
+}
+
 .sub-title-calendar {
     font-weight: bolder;
     font-size: 2vh;
@@ -215,6 +220,24 @@ td.selected {
     cursor: pointer;
 }
 
+.managementBtn {
+    background-color: #5A6A75;
+    border: none;
+    border-radius: 5px;
+    padding: 3%;
+    margin-right: 2%;
+    font-weight: bolder;
+    font-size: 2vh;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    color: whitesmoke;
+}
+
+.managementBtn:hover{
+    background-color:#5A6A75;
+    cursor: pointer;
+}
+
 .select{
     background-color: #454A4D;
     color: white;
@@ -308,3 +331,6 @@ td.selected {
     background-color: whitesmoke;
 }
 
+#sub-title-calendar {
+    margin-top: 8%;
+}

@@ -1,12 +1,12 @@
-import {calendarHtml} from "./views/Add/calendar.js";
+import {calendarHtml} from "./views/add/calendar.js";
 import {list} from "./views/calendarManagement.js";
-import  {form} from "./views/Add/form.js";
-import  {confirms} from "./views/Add/confirm.js";
+import  {form} from "./views/add/form.js";
+import  {confirms} from "./views/add/confirm.js";
 import  {index} from "./views/index.js";
 import  {reject} from "./views/reject.js";
-import {initMap} from "./views/maps-api.js"
-import {edit} from "./views/Edit.js"
-import {cancel} from "./views/cancel.js"
+import {initMap} from "./views/maps-api.js";
+import {edit} from "./views/edit.js";
+import {cancel} from "./views/cancel.js";
 
 //Mapping urls
 const mapping = [
